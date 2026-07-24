@@ -11,20 +11,23 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('categories', function (Blueprint $table) {
+        Schema::create('orders', function (Blueprint $table) {
             $table->increments('id');
-            $table->string("name", 50);
-            $table->string("description",150 );
-            $table->string("status",20);
+            $table->string('date_time', 45);
+            $table->string('subtotal', 45);
+            $table->string('status', 45 );
+            $table->string('total');
+
+            $table->foreignId("customer_id")->constrained("customers")->onUpdate("cascade")->onDelete("cascade");
+        
             $table->timestamps();
         });
     }
-
     /**
      * Reverse the migrations.
      */
     public function down(): void
     {
-        Schema::dropIfExists('categories');
+        Schema::dropIfExists('orders');
     }
 };

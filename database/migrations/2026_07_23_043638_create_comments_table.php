@@ -11,11 +11,10 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('shipping_addresses', function (Blueprint $table) {
-            $table->increments('id');
-            $table->string('department', 45);
-            $table->string('municipality', 45);
-            $table->string('exempt_address', 45 );
+        Schema::create('comments', function (Blueprint $table) {
+            $table->id();
+            $table->string('texto');
+            $table->string('qualification');
 
             $table->foreignId("producer_id")->constrained("producers")->onUpdate("cascade")->onDelete("cascade");
             $table->foreignId("customer_id")->constrained("customers")->onUpdate("cascade")->onDelete("cascade");
@@ -29,6 +28,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('shipping_addresses');
+        Schema::dropIfExists('comments');
     }
 };

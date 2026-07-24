@@ -11,13 +11,13 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('shipping_addresses', function (Blueprint $table) {
+    Schema::create('order_details', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('department', 45);
-            $table->string('municipality', 45);
-            $table->string('exempt_address', 45 );
+            $table->string('amount', 45);
+            $table->string('price', 45);
+            $table->string('subtotal', 45);
 
-            $table->foreignId("producer_id")->constrained("producers")->onUpdate("cascade")->onDelete("cascade");
+            $table->foreignId("order_id")->constrained("orders")->onUpdate("cascade")->onDelete("cascade");
             $table->foreignId("customer_id")->constrained("customers")->onUpdate("cascade")->onDelete("cascade");
         
             $table->timestamps();
@@ -29,6 +29,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('shipping_addresses');
+        Schema::dropIfExists('order_details');
     }
 };
