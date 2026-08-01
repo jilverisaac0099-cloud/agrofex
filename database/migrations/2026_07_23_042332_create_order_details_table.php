@@ -16,10 +16,16 @@ return new class extends Migration
             $table->string('amount', 45);
             $table->string('price', 45);
             $table->string('subtotal', 45);
+            
+            $table->integer('product_id')->unsigned();
+            $table->foreign("product_id")->references("id")->on("products")->onUpdate("cascade")->onDelete("cascade");
 
-            $table->foreignId("order_id")->constrained("orders")->onUpdate("cascade")->onDelete("cascade");
-            $table->foreignId("customer_id")->constrained("customers")->onUpdate("cascade")->onDelete("cascade");
-        
+            $table->integer('order_id')->unsigned();
+            $table->foreign("order_id")->references("id")->on("orders")->onUpdate("cascade")->onDelete("cascade");
+            
+            $table->integer('customer_id')->unsigned();
+            $table->foreign("customer_id")->references("id")->on("customers")->onUpdate("cascade")->onDelete("cascade");
+
             $table->timestamps();
         });
     }
