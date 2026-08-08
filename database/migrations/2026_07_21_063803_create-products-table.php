@@ -17,7 +17,7 @@ return new class extends Migration
             $table->string('description',400)->nullable();
             $table->decimal('price', 8,2)->unsigned();
             $table->string('status',20);
-        
+
             $table->integer('producer_id')->unsigned();
             $table->foreign("producer_id")->references("id")->on("producers")->onUpdate("cascade")->onDelete("cascade");
 

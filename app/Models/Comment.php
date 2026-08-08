@@ -15,7 +15,7 @@ class Comment extends Model
         'product_id'
     ];
 
-    
+
     public function producer(): BelongsTo
     {
         return $this->belongsTo(Producer::class);

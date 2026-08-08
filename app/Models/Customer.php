@@ -19,19 +19,9 @@ class Customer extends Model
         'user_id'
     ];
 
-    public function user(): BelongsTo
+public function user(): BelongsTo
     {
         return $this->belongsTo(User::class);
-    }
-
-    public function shippingAddresses(): HasMany
-    {
-        return $this->hasMany(ShippingAddress::class);
-    }
-
-    public function orders(): HasMany
-    {
-        return $this->hasMany(Order::class);
     }
 
     public function comments(): HasMany
@@ -39,4 +29,3 @@ class Customer extends Model
         return $this->hasMany(Comment::class);
     }
 }
-
