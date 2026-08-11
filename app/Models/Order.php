@@ -23,10 +23,6 @@ class Order extends Model
         return $this->belongsTo(Customer::class);
     }
 
-    public function orderDetails(): HasMany
-    {
-        return $this->hasMany(OrderDetail::class);
-    }
 
     public function payment(): HasOne
     {
