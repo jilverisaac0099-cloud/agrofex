@@ -2,7 +2,15 @@
 
 namespace App\Http\Controllers;
 
+use Illuminate\Http\OrderDetailRequest;
+use App\Models\OrderDetail;
+use App\Models\Order;
+use App\Models\Product;
+use App\Models\Customer;
+use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
+use Illuminate\View\View;
+
 
 class OrderDetailController extends Controller
 {
@@ -11,7 +19,8 @@ class OrderDetailController extends Controller
      */
     public function index()
     {
-        //
+        $orderdetails = OrderDetail::with('order,product,customer')->paginate(10);
+        return view('orderdetails.index', compact('orderdetails'));
     }
 
     /**
@@ -19,23 +28,29 @@ class OrderDetailController extends Controller
      */
     public function create()
     {
-        //
+        $orderdetail = new OrderDetail();
+        $orders = Order::all();
+        $products = Product::all();
+        $customers = Customer::all();
+        return view('orderdetails.create', compact('orderdetail', 'orders', 'products', 'customers'));
     }
 
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request)
+    public function store(OrderDetailRequest $request): RedirectResponse
     {
-        //
+        OrderDetail::create($request->validated());
+        return redirect()->route('order_details.index')->with('success', 'Detalle de pedido creado correctamente.');
     }
 
     /**
      * Display the specified resource.
      */
-    public function show(string $id)
+    public function show(OrderDetail $orderdetail)
     {
-        //
+        $orderdetail->load('order,product,customer');
+        return view(' order_details.show', compact('order_detail'));
     }
 
     /**
@@ -43,15 +58,21 @@ class OrderDetailController extends Controller
      */
     public function edit(string $id)
     {
-        //
+        $order_detail = OrderDetail::findOrFail($id);
+        $orders = Order::all();
+        $products = Product::all();
+        $customers = Customer::all();
+        return view('order_details.edit', compact('order_detail', 'orders', 'products', 'customers'));
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $id)
+    public function update(OrdenDetailRequest $request, string $id)
     {
-        //
+        $order_detail = OrderDetail::findOrFail($id);
+        $order_detail->update($request->validated());
+        return redirect()->route('order_details.index')->with('success', 'Detalle de pedido actualizado correctamente.');
     }
 
     /**
@@ -59,6 +80,8 @@ class OrderDetailController extends Controller
      */
     public function destroy(string $id)
     {
-        //
+        $order_detail = OrderDetail::findOrFail($id);
+        $order_detail->delete();
+        return redirect()->route('order_details.index')->with('success', 'Detalle de pedido eliminado correctamente.');
     }
 }
