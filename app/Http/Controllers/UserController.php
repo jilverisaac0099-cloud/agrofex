@@ -1,7 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
-
+use App\Models\User;
 use Illuminate\Http\Request;
 
 class UserController extends Controller
@@ -11,7 +11,8 @@ class UserController extends Controller
      */
     public function index()
     {
-    
+    $users = User::orderByDesc('id')->get();
+    return view('users.index', compact('users'));
     }
 
     /**
@@ -19,7 +20,8 @@ class UserController extends Controller
      */
     public function create()
     {
-        //
+        $user = new User();
+        return view('users.create', compact('user'));
     }
 
     /**
@@ -27,7 +29,8 @@ class UserController extends Controller
      */
     public function store(Request $request)
     {
-        //
+    User::create($request->validated());
+        return redirect()->route('users.index')->with('success', 'User creado exitosamente.');
     }
 
     /**
@@ -35,7 +38,8 @@ class UserController extends Controller
      */
     public function show(string $id)
     {
-        //
+        $user = User::findOrFail($id);
+        return view('users.show', compact('user'));
     }
 
     /**
@@ -43,7 +47,8 @@ class UserController extends Controller
      */
     public function edit(string $id)
     {
-        //
+        $user = User::findOrFail($id);
+        return view('users.edit', compact('user'));
     }
 
     /**
@@ -51,7 +56,9 @@ class UserController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        //
+        $user = User::findOrFail($id);
+        $user->update($request->validated());
+        return redirect()->route('users.index')->with('success', 'User actualizado exitosamente.');
     }
 
     /**
@@ -59,6 +66,8 @@ class UserController extends Controller
      */
     public function destroy(string $id)
     {
-        //
+        $user = User::findOrFail($id);
+        $user->delete();
+        return redirect()->route('users.index')->with('success', 'User eliminado del sistema.');
     }
 }
