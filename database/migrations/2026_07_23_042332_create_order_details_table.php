@@ -13,10 +13,10 @@ return new class extends Migration
     {
     Schema::create('order_details', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('amount', 45);
-            $table->string('price', 45);
-            $table->string('subtotal', 45);
-            
+            $table->decimal('amount', 15, 2);
+            $table->decimal('price', 15, 2);
+            $table->decimal('subtotal', 15, 2);
+
             $table->integer('product_id')->unsigned();
             $table->foreign("product_id")->references("id")->on("products")->onUpdate("cascade")->onDelete("cascade");
 
