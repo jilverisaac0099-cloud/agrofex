@@ -44,8 +44,8 @@
                      <div class="mb-6">
                         <label for="status" class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">Estado</label>
                         <select id="status" name="status" class="w-full rounded-xl border-gray-300 dark:border-gray-700 dark:bg-gray-900 dark:text-gray-300 focus:border-indigo-500 dark:focus:border-indigo-600 focus:ring focus:ring-indigo-500 focus:ring-opacity-20 shadow-sm transition-colors">
-                            <option value="active" {{ old('status') == 'active' ? 'selected' : '' }}>Activo</option>
-                            <option value="inactive" {{ old('status') == 'inactive' ? 'selected' : '' }}>Inactivo</option>
+                            <option value="disponible" {{ old('status') == 'disponible' ? 'selected' : '' }}>disponible</option>
+                            <option value="agotado" {{ old('status') == 'agotado' ? 'selected' : '' }}>agotado</option>
                         </select>
                         @error('status')
                             <p class="mt-2 text-sm text-red-600 dark:text-red-400">{{ $message }}</p>
