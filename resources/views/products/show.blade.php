@@ -54,4 +54,46 @@
                         {{ $product->status ?? 'Este producto no tiene estado registrado.'}}
                     </div>
                 </div>
-        <x-app-layout>
+
+                <div class="flex items-center justify-end gap-4 mt-8 pt-6 border-t border-gray-100 dark:border-gray-700">
+                    <form action="{{ route('products.destroy', $product) }}" method="POST" class="inline" id="form-delete-{{ $product->id }}">
+                        @csrf
+                        @method('DELETE')
+                        <button type="button" onclick="confirmarEliminacion({{ $product->id }})" class="inline-flex items-center px-4 py-2 bg-white dark:bg-gray-800 border border-red-200 dark:border-red-900/50 rounded-xl font-semibold text-xs text-red-600 dark:text-red-400 uppercase tracking-widest shadow-sm hover:bg-red-50 dark:hover:bg-red-900/20 focus:outline-none focus:ring-2 focus:ring-red-500 focus:ring-offset-2 transition ease-in-out duration-150">
+                            Eliminar
+                        </button>
+                    </form>
+
+                    <a href="{{ route('products.edit', $product) }}" class="inline-flex items-center px-4 py-2 bg-indigo-600 border border-transparent rounded-xl font-semibold text-xs text-white uppercase tracking-widest hover:bg-indigo-700 transition ease-in-out duration-150 shadow-lg shadow-indigo-500/30">
+                        Editar Producto
+                    </a>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function confirmarEliminacion(id) {
+            Swal.fire({
+                title: '¿Eliminar de forma permanente?',
+                text: "Esta acción no se puede deshacer.",
+                icon: 'warning',
+                showCancelButton: true,
+                confirmButtonColor: '#4f46e5',
+                cancelButtonColor: '#ef4444',
+                confirmButtonText: 'Sí, eliminar',
+                cancelButtonText: 'Cancelar',
+                background: '#1e293b',
+                color: '#ffffff',
+                customClass: {
+                    popup: 'rounded-2xl border border-gray-700'
+                }
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    document.getElementById('form-delete-' + id).submit();
+                }
+            })
+        }
+    </script>
+</x-app-layout>
