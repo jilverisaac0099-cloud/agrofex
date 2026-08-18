@@ -13,10 +13,10 @@
     <div class="py-12">
         <div class="max-w-2xl mx-auto sm:px-6 lg:px-8">
             <div class="bg-white dark:bg-gray-800 overflow-hidden shadow-xl sm:rounded-2xl border border-gray-100 dark:border-gray-700 p-8">
-                
+
                 <form action="{{ route('products.store') }}" method="POST" novalidate>
                     @csrf
-                    
+
                     <div class="mb-6">
                         <label for="name" class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">Nombre</label>
                         <input type="text" id="name" name="name" value="{{ old('name') }}" class="w-full rounded-xl border-gray-300 dark:border-gray-700 dark:bg-gray-900 dark:text-gray-300 focus:border-indigo-500 dark:focus:border-indigo-600 focus:ring focus:ring-indigo-500 focus:ring-opacity-20 shadow-sm transition-colors" placeholder="Ej. Producto A">
@@ -41,7 +41,7 @@
                         @enderror
                     </div>
 
-                     <div class="mb-6">
+                    <div class="mb-6">
                         <label for="status" class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">Estado</label>
                         <select id="status" name="status" class="w-full rounded-xl border-gray-300 dark:border-gray-700 dark:bg-gray-900 dark:text-gray-300 focus:border-indigo-500 dark:focus:border-indigo-600 focus:ring focus:ring-indigo-500 focus:ring-opacity-20 shadow-sm transition-colors">
                             <option value="disponible" {{ old('status') == 'disponible' ? 'selected' : '' }}>disponible</option>
