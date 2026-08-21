@@ -5,7 +5,7 @@
                 {{ __('Crear Nuevo Productor') }}
             </h2>
             <a href="{{ route('producers.index') }}" class="text-sm font-medium text-indigo-600 hover:text-indigo-800 transition-colors">
-                &larr; Volver a la lista
+                Volver a la lista
             </a>
         </div>
     </x-slot>
@@ -28,64 +28,58 @@
                 <form action="{{ route('producers.store') }}" method="POST" class="space-y-6">
                     @csrf
 
-                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-                        <div>
-                            <label for="name" class="block text-sm font-semibold text-gray-700 mb-2">Nombre</label>
-                            <input type="text" name="name" id="name" value="{{ old('name') }}" required
-                                class="w-full rounded-xl border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 py-3 px-4 text-gray-700">
-                        </div>
-
-                        <div>
-                            <label for="lastname" class="block text-sm font-semibold text-gray-700 mb-2">Apellido</label>
-                            <input type="text" name="lastname" id="lastname" value="{{ old('lastname') }}" required
-                                class="w-full rounded-xl border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 py-3 px-4 text-gray-700">
-                        </div>
+                    <div>
+                        <label for="name" class="block text-sm font-semibold text-gray-700 mb-2">Nombre del productor</label>
+                        <input type="text" name="name" id="name" value="{{ old('name') }}" placeholder="Ej. Juan" required
+                            class="w-full rounded-xl border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 py-3 px-4 text-gray-700">
                     </div>
 
-                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-                        <div>
-                            <label for="telephone" class="block text-sm font-semibold text-gray-700 mb-2">Teléfono</label>
-                            <input type="text" name="telephone" id="telephone" value="{{ old('telephone') }}"
-                                class="w-full rounded-xl border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 py-3 px-4 text-gray-700">
-                        </div>
+                    <div>
+                        <label for="lastname" class="block text-sm font-semibold text-gray-700 mb-2">Apellido</label>
+                        <input type="text" name="lastname" id="lastname" value="{{ old('lastname') }}" placeholder="Ej. Pérez" required
+                            class="w-full rounded-xl border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 py-3 px-4 text-gray-700">
+                    </div>
 
-                        <div>
-                            <label for="gender" class="block text-sm font-semibold text-gray-700 mb-2">Género</label>
-                            <select name="gender" id="gender" class="w-full rounded-xl border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 py-3 px-4 text-gray-700">
-                                <option value="">Seleccione género...</option>
-                                <option value="male" {{ old('gender') == 'male' ? 'selected' : '' }}>Masculino</option>
-                                <option value="female" {{ old('gender') == 'female' ? 'selected' : '' }}>Femenino</option>
-                                <option value="other" {{ old('gender') == 'other' ? 'selected' : '' }}>Otro</option>
-                            </select>
-                        </div>
+                    <div>
+                        <label for="telephone" class="block text-sm font-semibold text-gray-700 mb-2">Teléfono</label>
+                        <input type="text" name="telephone" id="telephone" value="{{ old('telephone') }}" placeholder="Ej. 88888888"
+                            class="w-full rounded-xl border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 py-3 px-4 text-gray-700">
+                    </div>
+
+                    <div>
+                        <label for="gender" class="block text-sm font-semibold text-gray-700 mb-2">Género</label>
+                        <select name="gender" id="gender" class="w-full rounded-xl border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 py-3 px-4 text-gray-700">
+                            <option value="">Seleccione un género</option>
+                            <option value="male" {{ old('gender') == 'male' ? 'selected' : '' }}>Masculino</option>
+                            <option value="female" {{ old('gender') == 'female' ? 'selected' : '' }}>Femenino</option>
+                            <option value="other" {{ old('gender') == 'other' ? 'selected' : '' }}>Otro</option>
+                        </select>
                     </div>
 
                     <div>
                         <label for="address" class="block text-sm font-semibold text-gray-700 mb-2">Dirección</label>
-                        <input type="text" name="address" id="address" value="{{ old('address') }}"
+                        <input type="text" name="address" id="address" value="{{ old('address') }}" placeholder="Ej. Managua, Nicaragua"
                             class="w-full rounded-xl border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 py-3 px-4 text-gray-700">
                     </div>
 
-                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-                        <div>
-                            <label for="description" class="block text-sm font-semibold text-gray-700 mb-2">Descripción</label>
-                            <textarea name="description" id="description" rows="3"
-                                class="w-full rounded-xl border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 py-3 px-4 text-gray-700">{{ old('description') }}</textarea>
-                        </div>
+                    <div>
+                        <label for="description" class="block text-sm font-semibold text-gray-700 mb-2">Descripción</label>
+                        <textarea name="description" id="description" rows="3" placeholder="Ej. Productor de granos básicos..."
+                            class="w-full rounded-xl border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 py-3 px-4 text-gray-700">{{ old('description') }}</textarea>
+                    </div>
 
-                        <div>
-                            <label for="schedule" class="block text-sm font-semibold text-gray-700 mb-2">Horario</label>
-                            <input type="text" name="schedule" id="schedule" value="{{ old('schedule') }}" placeholder="Ej: Lunes a Viernes 8:00 - 17:00"
-                                class="w-full rounded-xl border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 py-3 px-4 text-gray-700">
-                        </div>
+                    <div>
+                        <label for="schedule" class="block text-sm font-semibold text-gray-700 mb-2">Horario</label>
+                        <input type="text" name="schedule" id="schedule" value="{{ old('schedule') }}" placeholder="Lunes a Viernes 8:00 - 17:00"
+                            class="w-full rounded-xl border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 py-3 px-4 text-gray-700">
                     </div>
 
                     <div class="flex items-center justify-end space-x-4 pt-4 border-t border-gray-100">
-                        <a href="{{ route('producers.index') }}" class="px-6 py-3 bg-gray-100 hover:bg-gray-200 text-gray-700 font-semibold rounded-xl transition-colors">
-                            Cancelar
+                        <a href="{{ route('producers.index') }}" class="px-6 py-3 bg-white border border-gray-300 hover:bg-gray-50 text-gray-700 font-semibold rounded-xl transition-colors">
+                            CANCELAR
                         </a>
                         <button type="submit" class="px-6 py-3 bg-indigo-600 hover:bg-indigo-700 text-white font-semibold rounded-xl shadow-lg shadow-indigo-500/30 transition-colors">
-                            Guardar Productor
+                            GUARDAR PRODUCTOR
                         </button>
                     </div>
                 </form>
