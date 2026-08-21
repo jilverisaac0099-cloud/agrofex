@@ -36,6 +36,12 @@
                     </div>
 
                     <div>
+                        <label for="email" class="block text-sm font-semibold text-gray-700 mb-2">Correo electronico</label>
+                        <input type="text" name="email" id="email" value="{{ old('email') }}" placeholder="Ej. isaac@gmail.com"
+                            class="w-full rounded-xl border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 py-3 px-4 text-gray-700">
+                    </div>
+
+                    <div>
                         <label for="gender" class="block text-sm font-semibold text-gray-700 mb-2">Género</label>
                         <select name="gender" id="gender" class="w-full rounded-xl border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 py-3 px-4 text-gray-700">
                             <option value="">Seleccione un género</option>
