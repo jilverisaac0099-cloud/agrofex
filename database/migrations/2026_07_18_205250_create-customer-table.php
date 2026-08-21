@@ -15,10 +15,11 @@ return new class extends Migration
             $table->increments('id');
             $table->string("name",50)->index();
             $table->string("last_name",45);
-            $table->string('telephone',45)->unique();
+            $table->integer('telephone',45)->unique();
             $table->string('email',100)->unique();
             $table->string('gender',20);
-            $table->string('registration_date')->nullable();
+            $table->date('birth_date')->nullable();
+            $table->date('registration_date')->nullable();
             $table->timestamps();
         });
     }

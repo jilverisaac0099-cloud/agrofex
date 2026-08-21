@@ -56,7 +56,7 @@
                         <option value="">Seleccione un género</option>
                         <option value="male" {{ old('gender', $customer->gender) === 'male' ? 'selected' : '' }}>Masculino</option>
                         <option value="female" {{ old('gender', $customer->gender) === 'female' ? 'selected' : '' }}>Femenino</option>
-                        <option value="other" {{ old('gender', $customer->gender) === 'other' ? 'selected' : '' }}>Otro</option>
+                        <option value="other" {{ old('gender', $customer->gender) === 'other' ? 'selected' : '' }}>otro</option>
                     </select>
                     @error('gender')
                         <p class="mt-2 text-sm text-red-600">{{ $message }}</p>

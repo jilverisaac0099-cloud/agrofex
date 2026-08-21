@@ -13,8 +13,11 @@ return new class extends Migration
     {
         Schema::create('comments', function (Blueprint $table) {
             $table->id();
-            $table->string('texto');
+            $table->string('text');
             $table->string('qualification');
+
+            $table->integer('product_id')->unsigned();
+            $table->foreign("product_id")->references("id")->on("product")->onUpdate("cascade")->onDelete("cascade");
 
             $table->integer('producer_id')->unsigned();
             $table->foreign("producer_id")->references("id")->on("producers")->onUpdate("cascade")->onDelete("cascade");

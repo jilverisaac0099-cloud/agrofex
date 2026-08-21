@@ -24,10 +24,10 @@ class CommentRequest extends FormRequest
     {
         return [
             'product_id' => ['required', 'integer'],
-            'prducer_id' => ['required', 'integer'],
+            'producer_id' => ['required', 'integer'],
             'customer_id' => ['required', 'integer'],
             'text' => ['required', 'string', 'min:3', 'max:400'],
-            'qualification' => ['required', 'integer', 'min:1', 'max:5'],
+            'qualification' => ['required', 'numeric', 'min:1', 'max:5'],
         ];
     }
 
@@ -35,7 +35,7 @@ public function messages(): array
     {
         return [
             'product_id.required' => 'El campo producto es obligatorio.',
-            'prducer_id.required' => 'El campo productor es obligatorio.',
+            'producer_id.required' => 'El campo productor es obligatorio.',
             'customer_id.required' => 'El campo cliente es obligatorio.',
 
             'text.string' => 'El comentario solo pemite caracteres',
@@ -44,7 +44,7 @@ public function messages(): array
             'text.max' => 'El maximo de caracteres es de 400',
 
             'qualification.required' => 'El campo calificación es obligatorio.',
-            'qualification.integer' => 'El campo calificación debe ser un número entero.',
+            'qualification.numeric' => 'El campo calificación debe ser un número.',
             'qualification.min' => 'La calificación mínima es de 1.',
             'qualification.max' => 'La calificación máxima es de 5.',
         ];

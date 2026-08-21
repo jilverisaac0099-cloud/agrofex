@@ -28,10 +28,11 @@ class ProducerRequest extends FormRequest
             'last_name' => ['required', 'string', 'min:3', 'max:255'],
             'gender' => ['required','min:3','max:20',Rule:: in(['male', 'female', 'other'])],
             'telephone' => ['required', 'string','min:7', 'max:20'],
+            'email' => ['required', 'string', 'email','min:3' ,'max:255', Rule::unique('producers')->ignore($this->producer)],
             'address' => ['required', 'string', 'max:255'],
             'description' => ['required', 'string' , 'min:3', 'max:400'],
             'schedule' => ['required', 'string' , 'min:3','max:45'],
-        
+
         ];
     }
 public function messages(): array
@@ -57,6 +58,12 @@ public function messages(): array
             'telephone.required' => 'El campo teléfono es obligatorio.',
             'telephone.min' => 'El minimo de caracteres es de 7',
             'telephone.max' => 'El maximo de caracteres es de 15',
+
+            'email.string' => 'El correo electrónico solo pemite caracteres',
+            'email.required' => 'El campo correo electrónico es obligatorio.',
+            'email.email' => 'El correo electrónico debe ser una dirección válida.',
+            'email.min' => 'El minimo de caracteres es de 3',
+            'email.max' => 'El maximo de caracteres es de 100',
 
             'address.string' => 'La dirección solo pemite caracteres',
             'address.required' => 'El campo dirección es obligatorio.',

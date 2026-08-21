@@ -36,7 +36,7 @@ class ProductController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(ProductRequest $request): RedirectResponse
+    public function store(ProductRequest $request)
     {
         Product::create($request->validated());
         return redirect()->route('products.index')->with('success', 'Producto creado correctamente.');
@@ -45,16 +45,16 @@ class ProductController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(Product $product): View
+    public function show(Product $product)
     {
         $product->load('customer,producer');
-        return view('products.show', compact('product'));
+        return view('Products.show', compact('product','customer','producer'));
     }
 
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(string $id): View
+    public function edit(string $id)
     {
         $product = Product::findOrFail($id);
         $customers = Customer::all();
@@ -65,7 +65,7 @@ class ProductController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(ProductRequest $request, string $id): RedirectResponse
+    public function update(ProductRequest $request, string $id)
     {
         $product = Product::findOrFail($id);
         $product->update($request->validated());

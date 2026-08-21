@@ -19,21 +19,22 @@ class CustomerRequest extends FormRequest
     /**
      * Get the validation rules that apply to the request.
      *
-     * @return array<string, ValidationRule|array|string>
+     * @return array<string, ValidationRule|array<mixed>|string>
      */
     public function rules(): array
     {
         return [
             'name' => ['required', 'string', 'max:255'],
-            'last_name' => ['required', 'string', 'max:255'],
-            'telephone' => ['required', 'string', 'max:20'],
-            'email' => ['required', 'string', 'email', 'max:255', Rule::unique('customers')->ignore($this->customer)],
-            'gender' => ['required', Rule:: in(['male', 'female', 'other'])],
-            'birth_date' => ['nullable', 'date'],
-            'registration_date' => ['nullable', 'date'],
+            'last_name' => ['required', 'string', 'min:3', 'max:255'],
+            'telephone' => ['required', 'string', 'min:7', 'max:20'],
+            'email' => ['required', 'string', 'email','min:3' ,'max:255', Rule::unique('customers')->ignore($this->customer)],
+            'gender' => ['required','string','min:3','max:20',Rule:: in(['male', 'female', 'other'])],
+            'birth_date' => ['nullable','string','min:3','max:20','date'],
+            'registration_date' => ['nullable','min:3','max:20','date'],
         ];
     }
-}
+    
+
 public function messages(): array
     {
         return [
@@ -59,7 +60,7 @@ public function messages(): array
             'email.max' => 'El maximo de caracteres es de 100',
 
             'gender.required'=> 'El campo género es obligatorio.',
-            'gender.in' => 'El campo género debe ser uno de los siguientes: male, female, other.',
+            'gender.in' => 'El campo género debe ser uno de los siguientes: mujer, hombre, otro.',
             'gender.string' => 'El campo género debe ser una cadena de texto.',
             'gender.min' => 'El minimo de caracteres es de 3',
             'gender.max' => 'El maximo de caracteres es de 20',
@@ -75,3 +76,4 @@ public function messages(): array
             'registration_date.max' => 'El maximo de caracteres es de 20',
         ];
     }
+}

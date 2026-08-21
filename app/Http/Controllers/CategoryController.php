@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Category;
-use App\Http\Requests\CategoryRequest; // Corregido: Request -> Requests
+use App\Http\Requests\CategoryRequest;
 
 class CategoryController extends Controller
 {
@@ -44,9 +44,7 @@ class CategoryController extends Controller
         return redirect()->route('categories.index')->with('success', 'Categoría actualizada exitosamente.');
     }
 
-    /**
-     * Elimina el recurso especificado de la base de datos.
-     */
+
     public function destroy(Category $category)
     {
         $category->delete();

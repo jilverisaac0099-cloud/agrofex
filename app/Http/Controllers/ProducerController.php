@@ -32,20 +32,20 @@ class ProducerController extends Controller
         return view('producers.show', compact('producer'));
     }
 
-    
+
     public function edit(string $id)
     {
         $producer = Producer::findOrFail($id);
         return view('producers.edit', compact('producer'));
     }
 
-    public function update(CustomerRequest $request , Producer $producer)
+    public function update(ProducerRequest $request , Producer $producer)
     {
         $producer->update($request->validated());
         return redirect()->route('producers.index')->with('success', 'Productor actualizado exitosamente.');
     }
-    
-       public function destroy(string $id)
+
+    public function destroy(string $id)
     {
         $producer = Producer::findOrFail($id);
         $producer->delete();
