@@ -13,6 +13,7 @@ class Producer extends Model
         'lastname',
         'gender',
         'telephone',
+        'email',
         'address',
         'description',
         'schedule',
