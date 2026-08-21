@@ -33,7 +33,7 @@ class CustomerRequest extends FormRequest
             'registration_date' => ['nullable','min:3','max:20','date'],
         ];
     }
-    
+
 
 public function messages(): array
     {

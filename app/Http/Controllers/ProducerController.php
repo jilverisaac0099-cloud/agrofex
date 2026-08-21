@@ -1,8 +1,8 @@
 <?php
 
 namespace App\Http\Controllers;
-use App\Models\producer;
-use App\Http\Request\ProducerRequest;
+use App\Models\Producer;
+use App\Http\Requests\ProducerRequest;
 
 
 class ProducerController extends Controller

@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Customer;
 
-use App\Http\Request\CustomerRequest;
+use App\Http\Requests\CustomerRequest;
 
 
 
