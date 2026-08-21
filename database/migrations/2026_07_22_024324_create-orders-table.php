@@ -17,8 +17,8 @@ return new class extends Migration
             $table->string('subtotal', 45);
             $table->string('status', 45 );
             $table->string('total');
-        
-            $table->integer('customer_id')->unsigned();
+
+            $table->bigInteger('customer_id')->unsigned();
             $table->foreign("customer_id")->references("id")->on("customers")->onUpdate("cascade")->onDelete("cascade");
 
             $table->timestamps();

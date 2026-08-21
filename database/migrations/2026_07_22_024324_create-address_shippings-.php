@@ -11,7 +11,7 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('shipping_addresses', function (Blueprint $table) {
+        Schema::create('address_shippings', function (Blueprint $table) {
             $table->increments('id');
             $table->string('department', 45);
             $table->string('municipality', 45);
