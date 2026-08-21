@@ -2,11 +2,11 @@
     <x-slot name="header">
     <div class="flex items-center justify-between">
         <h2 class="font-semibold text-2x1 text-gray-800 leading-tight tracking-tight">
-            {{ __('crear_cliente') }}
+            {{ __('Crear Nuevo Cliente') }}
         </h2>
-        <a hidden href="{{ route('customers.index') }}" class="text-sm text-gray-500 hover:text-indigo-600 transition-colors font-medium">
-            volver a la lista
-        </a>
+        <a href="{{ route('producers.index') }}" class="text-sm font-medium text-indigo-600 hover:text-indigo-800 transition-colors">
+                Volver a la lista
+            </a>
     </div>
     </x-slot>
     

@@ -13,17 +13,6 @@
     <div class="py-12">
         <div class="max-w-4xl mx-auto sm:px-6 lg:px-8">
             <div class="bg-white overflow-hidden shadow-xl sm:rounded-2xl border border-gray-100 p-8">
-                
-                @if ($errors->any())
-                    <div class="mb-6 bg-red-50 border-l-4 border-red-500 p-4 rounded-r-xl">
-                        <p class="font-bold text-red-700">Por favor corrige los siguientes errores:</p>
-                        <ul class="mt-2 list-disc list-inside text-sm text-red-600">
-                            @foreach ($errors->all() as $error)
-                                <li>{{ $error }}</li>
-                            @endforeach
-                        </ul>
-                    </div>
-                @endif
 
                 <form action="{{ route('producers.store') }}" method="POST" class="space-y-6">
                     @csrf
