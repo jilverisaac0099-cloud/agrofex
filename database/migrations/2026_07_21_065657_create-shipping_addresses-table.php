@@ -20,9 +20,8 @@ return new class extends Migration
             $table->integer('producer_id')->unsigned();
             $table->foreign("producer_id")->references("id")->on("producers")->onUpdate("cascade")->onDelete("cascade");
 
-            $table->integer('customer_id')->unsigned();
+            $table->bigInteger('customer_id')->unsigned();
             $table->foreign("customer_id")->references("id")->on("customers")->onUpdate("cascade")->onDelete("cascade");
-
             $table->timestamps();
         });
     }
