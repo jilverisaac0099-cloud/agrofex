@@ -17,7 +17,7 @@ return new class extends Migration
             $table->string('qualification');
 
             $table->integer('product_id')->unsigned();
-            $table->foreign("product_id")->references("id")->on("product")->onUpdate("cascade")->onDelete("cascade");
+            $table->foreign("product_id")->references("id")->on("products")->onUpdate("cascade")->onDelete("cascade");
 
             $table->integer('producer_id')->unsigned();
             $table->foreign("producer_id")->references("id")->on("producers")->onUpdate("cascade")->onDelete("cascade");
