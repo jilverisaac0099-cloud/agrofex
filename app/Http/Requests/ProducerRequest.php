@@ -25,17 +25,17 @@ class ProducerRequest extends FormRequest
     {
         return [
             'name' => ['required', 'string', 'max:255'],
-            'last_name' => ['required', 'string', 'min:3', 'max:255'],
-            'gender' => ['required','min:3','max:20',Rule:: in(['male', 'female', 'other'])],
+            'lastname' => ['required', 'string', 'min:3', 'max:255'],
+            'gender' => ['required','min:3','max:20',Rule::in(['male', 'female', 'other'])],
             'telephone' => ['required', 'string','min:7', 'max:20'],
             'email' => ['required', 'string', 'email','min:3' ,'max:255', Rule::unique('producers')->ignore($this->producer)],
             'address' => ['required', 'string', 'max:255'],
             'description' => ['required', 'string' , 'min:3', 'max:400'],
             'schedule' => ['required', 'string' , 'min:3','max:45'],
-
         ];
     }
-public function messages(): array
+
+    public function messages(): array
     {
         return [
             'name.string' => 'El nombre solo pemite caracteres',
@@ -43,10 +43,10 @@ public function messages(): array
             'name.min' => 'El minimo de caracteres es de 3',
             'name.max' => 'El maximo de caracteres es de 50',
 
-            'last_name.string' => 'El apellido solo pemite caracteres',
-            'last_name.required' => 'El campo apellido es obligatorio.',
-            'last_name.min' => 'El minimo de caracteres es de 3',
-            'last_name.max' => 'El maximo de caracteres es de 50',
+            'lastname.string' => 'El apellido solo pemite caracteres',
+            'lastname.required' => 'El campo apellido es obligatorio.',
+            'lastname.min' => 'El minimo de caracteres es de 3',
+            'lastname.max' => 'El maximo de caracteres es de 50',
 
             'gender.required'=> 'El campo género es obligatorio.',
             'gender.in' => 'El campo género debe ser uno de los siguientes: mujer, hombre, otro.',
