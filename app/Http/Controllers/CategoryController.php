@@ -7,18 +7,18 @@ use App\Http\Requests\CategoryRequest;
 
 class CategoryController extends Controller
 {
-public function index()
-{
+    public function index()
+    {
 
-    $categories = Category::withCount('products')->orderByDesc('id')->paginate(10);
-    return view('categories.index', compact('categories'));
-}
+        $categories = Category::withCount('products')->orderByDesc('id')->paginate(10);
+        return view('categories.index', compact('categories'));
+    }
+
     public function create()
     {
         $category = new Category();
         return view('categories.create', compact('category'));
     }
-
 
     public function store(CategoryRequest $request)
     {
@@ -26,12 +26,10 @@ public function index()
         return redirect()->route('categories.index')->with('success', 'Categoría creada exitosamente.');
     }
 
-
     public function show(Category $category)
     {
         return view('categories.show', compact('category'));
     }
-
 
     public function edit(Category $category)
     {
@@ -43,7 +41,6 @@ public function index()
         $category->update($request->validated());
         return redirect()->route('categories.index')->with('success', 'Categoría actualizada exitosamente.');
     }
-
 
     public function destroy(Category $category)
     {

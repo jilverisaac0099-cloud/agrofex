@@ -4,7 +4,7 @@
         <h2 class="font-semibold text-2x1 text-gray-800 leading-tight tracking-tight">
             {{ __('Crear Nuevo Cliente') }}
         </h2>
-        <a href="{{ route('producers.index') }}" class="text-sm font-medium text-indigo-600 hover:text-indigo-800 transition-colors">
+         <a href="{{ route('producers.index') }}" class="text-sm font-medium text-indigo-600 hover:text-indigo-800 transition-colors">
                 Volver a la lista
             </a>
     </div>
@@ -80,9 +80,9 @@
                 </div>
 
 
-            <div class="flex items-center justify-end gap-4 mt-8 pt-6 border-t border-gray-100">
-                        <a href="{{ route('customers.index') }}" class="inline-flex items-center px-4 py-2 bg-white border border-gray-300 rounded-xl font-semibold text-xs text-gray-700 uppercase tracking-widest shadow-sm hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 disabled:opacity-25 transition ease-in-out duration-150">
-                            Cancelar
+                 <div class="flex items-center justify-end space-x-4 pt-4 border-t border-gray-100">
+                        <a href="{{ route('customers.index') }}" class="px-6 py-3 bg-white border border-gray-300 hover:bg-gray-50 text-gray-700 font-semibold rounded-xl transition-colors">
+                            CANCELAR
                         </a>
                         <button type="submit" class="inline-flex items-center px-4 py-2 bg-indigo-600 border border-transparent rounded-xl font-semibold text-xs text-white uppercase tracking-widest hover:bg-indigo-700 focus:bg-indigo-700 active:bg-indigo-900 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 transition ease-in-out duration-150 shadow-lg shadow-indigo-500/30">
                             Guardar Cliente
