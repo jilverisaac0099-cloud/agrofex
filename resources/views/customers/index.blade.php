@@ -46,9 +46,8 @@
                                     </td>
                                     <td class="px-6 py-4">
                                         <div class="text-sm text-gray-600 max-w-xs truncate">{{ $customer->email ?? 'Sin email' }}</div>
-                                    </td>
                                     <td class="px-6 py-4">
-                                        <div class="text-sm text-gray-600 max-w-xs truncate">{{ $customer->gender ?? 'Sin género' }}</div>
+                                        <div class="text-sm text-gray-600 max-w-xs truncate">{{ $customer->gender ?? 'N/A' }}</div>
                                     </td>
                                     <td class="px-6 py-4">
                                         <div class="text-sm text-gray-600 max-w-xs truncate">{{ $customer->birth_date ?? 'N/A' }}</div>
