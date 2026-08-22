@@ -48,13 +48,15 @@
                     </div>
                 </div>
 
-                <div class="mt-8 border-t border-gray-100 pt-6">
-                    <h3 class="text-sm font-medium text-gray-500 uppercase tracking-wider mb-2">Género</h3>
+                 <div class="mt-8 border-t border-gray-100 pt-6">
+                    <h3 class="text-sm font-medium text-gray-500 uppercase tracking-wider mb-2">genero</h3>
                     <div class="text-gray-700 bg-gray-50 p-4 rounded-xl border border-gray-100 min-h-[100px]">
-                        {{ $customer->gender ?? 'Este cliente no tiene género registrado.' }}
+                        {{ $customer->gender?? 'Este cliente no tiene teléfono registrado.' }}
                     </div>
                 </div>
-
+      
+</div>
+</div>
                 <div class="mt-8 border-t border-gray-100 pt-6">
                     <h3 class="text-sm font-medium text-gray-500 uppercase tracking-wider mb-2">fecha de nacimiento</h3>
                     <div class="text-gray-700 bg-gray-50 p-4 rounded-xl border border-gray-100 min-h-[100px]">
