@@ -7,12 +7,12 @@ use App\Http\Requests\CategoryRequest;
 
 class CategoryController extends Controller
 {
-        public function index()
-    {
-        $categories = Category::orderByDesc('id')->get();
-        return view('categories.index', compact('categories'));
-    }
+public function index()
+{
 
+    $categories = Category::withCount('products')->orderByDesc('id')->paginate(10);
+    return view('categories.index', compact('categories'));
+}
     public function create()
     {
         $category = new Category();
