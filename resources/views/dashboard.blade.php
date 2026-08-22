@@ -88,7 +88,7 @@
                     <div class="p-8">
                         <div class="flex justify-between items-start mb-6">
                             <div>
-                                <h4 class="text-xl font-bold text-gray-900 dark:text-white mb-2 group-hover:text-blue-600 transition-colors">Clientes y Mayoristas</h4>
+                                <h4 class="text-xl font-bold text-gray-900 dark:text-white mb-2 group-hover:text-blue-600 transition-colors">Clientes</h4>
                                 <p class="text-sm text-gray-500 dark:text-gray-400">Visualiza la cartera de clientes y compradores de tu plataforma.</p>
                             </div>
                             <div class="p-3 bg-blue-50 dark:bg-blue-900/30 rounded-xl border border-blue-100 text-blue-600 group-hover:scale-110 transition-transform duration-300">
@@ -106,7 +106,7 @@
                     <div class="p-8">
                         <div class="flex justify-between items-start mb-6">
                             <div>
-                                <h4 class="text-xl font-bold text-gray-900 dark:text-white mb-2 group-hover:text-amber-600 transition-colors">Órdenes y Pedidos</h4>
+                                <h4 class="text-xl font-bold text-gray-900 dark:text-white mb-2 group-hover:text-amber-600 transition-colors">Pedidos</h4>
                                 <p class="text-sm text-gray-500 dark:text-gray-400">Controla las compras realizadas y genera detalles de pedidos (Order Detail).</p>
                             </div>
                             <div class="p-3 bg-amber-50 dark:bg-amber-900/30 rounded-xl border border-amber-100 text-amber-600 group-hover:scale-110 transition-transform duration-300">
@@ -142,7 +142,7 @@
                     <div class="p-8">
                         <div class="flex justify-between items-start mb-6">
                             <div>
-                                <h4 class="text-xl font-bold text-gray-900 dark:text-white mb-2 group-hover:text-yellow-600 transition-colors">Historial de Pagos</h4>
+                                <h4 class="text-xl font-bold text-gray-900 dark:text-white mb-2 group-hover:text-yellow-600 transition-colors">Pago</h4>
                                 <p class="text-sm text-gray-500 dark:text-gray-400">Administra las transacciones, transferencias y el flujo de caja.</p>
                             </div>
                             <div class="p-3 bg-yellow-50 dark:bg-yellow-900/30 rounded-xl border border-yellow-100 text-yellow-600 group-hover:scale-110 transition-transform duration-300">
@@ -160,7 +160,7 @@
                     <div class="p-8">
                         <div class="flex justify-between items-start mb-6">
                             <div>
-                                <h4 class="text-xl font-bold text-gray-900 dark:text-white mb-2 group-hover:text-teal-600 transition-colors">Logística y Envíos</h4>
+                                <h4 class="text-xl font-bold text-gray-900 dark:text-white mb-2 group-hover:text-teal-600 transition-colors">direcciones</h4>
                                 <p class="text-sm text-gray-500 dark:text-gray-400">Gestiona las direcciones de envío y las rutas de entrega a clientes.</p>
                             </div>
                             <div class="p-3 bg-teal-50 dark:bg-teal-900/30 rounded-xl border border-teal-100 text-teal-600 group-hover:scale-110 transition-transform duration-300">
