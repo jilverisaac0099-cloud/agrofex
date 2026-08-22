@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Product;
 use App\Http\Requests\ProductRequest;
+use App\Models\Category;
 use App\Models\Customer;
 use App\Models\Producer;
 use Illuminate\Http\RedirectResponse;
@@ -28,9 +29,9 @@ class ProductController extends Controller
     public function create(): View
     {
         $product = new Product();
-        $customers = Customer::all();
+        $categories = Category::all();
         $producers = Producer::all();
-        return view('products.create', compact('product', 'customers', 'producers'));
+        return view('products.create', compact('product', 'producers', 'categories'));
     }
 
     /**
