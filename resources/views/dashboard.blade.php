@@ -7,8 +7,7 @@
 
     <div class="py-12">
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8 space-y-6">
-            
-            <!-- Tarjeta de Bienvenida -->
+
             <div class="bg-white dark:bg-gray-800 overflow-hidden shadow-xl sm:rounded-2xl border border-gray-100 dark:border-gray-700 p-8 relative">
                 <div class="absolute top-0 right-0 -mt-4 -mr-4 w-32 h-32 bg-emerald-500 opacity-10 rounded-full blur-3xl"></div>
                 <div class="flex items-center gap-6 relative z-10">
@@ -26,10 +25,10 @@
                 </div>
             </div>
 
-            <!-- Grid de Módulos -->
+
             <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-                
-                <!-- 1. Gestión de Productores (Producer) -->
+
+
                 <a href="{{ route('producers.index') }}" class="group block bg-white dark:bg-gray-800 overflow-hidden shadow-md sm:rounded-2xl border border-gray-100 dark:border-gray-700 hover:border-emerald-500/50 hover:shadow-xl hover:-translate-y-1 transition-all duration-300">
                     <div class="p-8">
                         <div class="flex justify-between items-start mb-6">
@@ -47,7 +46,7 @@
                     </div>
                 </a>
 
-                <!-- 2. Gestión de Productos (Product) -->
+
                 <a href="{{ route('products.index') }}" class="group block bg-white dark:bg-gray-800 overflow-hidden shadow-md sm:rounded-2xl border border-gray-100 dark:border-gray-700 hover:border-lime-500/50 hover:shadow-xl hover:-translate-y-1 transition-all duration-300">
                     <div class="p-8">
                         <div class="flex justify-between items-start mb-6">
@@ -65,7 +64,6 @@
                     </div>
                 </a>
 
-                <!-- 3. Categorías (Category) -->
                 <a href="{{ route('categories.index') }}" class="group block bg-white dark:bg-gray-800 overflow-hidden shadow-md sm:rounded-2xl border border-gray-100 dark:border-gray-700 hover:border-green-500/50 hover:shadow-xl hover:-translate-y-1 transition-all duration-300">
                     <div class="p-8">
                         <div class="flex justify-between items-start mb-6">
@@ -83,7 +81,6 @@
                     </div>
                 </a>
 
-                <!-- 4. Clientes (Customer) -->
                 <a href="{{ route('customers.index') }}" class="group block bg-white dark:bg-gray-800 overflow-hidden shadow-md sm:rounded-2xl border border-gray-100 dark:border-gray-700 hover:border-blue-500/50 hover:shadow-xl hover:-translate-y-1 transition-all duration-300">
                     <div class="p-8">
                         <div class="flex justify-between items-start mb-6">
@@ -101,7 +98,6 @@
                     </div>
                 </a>
 
-                <!-- 5. Pedidos (Order) -->
                 <a href="{{ route('orders.index') }}" class="group block bg-white dark:bg-gray-800 overflow-hidden shadow-md sm:rounded-2xl border border-gray-100 dark:border-gray-700 hover:border-amber-500/50 hover:shadow-xl hover:-translate-y-1 transition-all duration-300">
                     <div class="p-8">
                         <div class="flex justify-between items-start mb-6">
@@ -119,7 +115,7 @@
                     </div>
                 </a>
 
-                <!-- 9. Detalles de Pedido (OrderDetail) -->
+
                 <a href="{{ route('order_details.index') }}" class="group block bg-white dark:bg-gray-800 overflow-hidden shadow-md sm:rounded-2xl border border-gray-100 dark:border-gray-700 hover:border-rose-500/50 hover:shadow-xl hover:-translate-y-1 transition-all duration-300">
                     <div class="p-8">
                         <div class="flex justify-between items-start mb-6">
@@ -137,7 +133,6 @@
                     </div>
                 </a>
 
-                <!-- 6. Pagos (Payment) -->
                 <a href="{{ route('payments.index') }}" class="group block bg-white dark:bg-gray-800 overflow-hidden shadow-md sm:rounded-2xl border border-gray-100 dark:border-gray-700 hover:border-yellow-500/50 hover:shadow-xl hover:-translate-y-1 transition-all duration-300">
                     <div class="p-8">
                         <div class="flex justify-between items-start mb-6">
@@ -173,7 +168,6 @@
                     </div>
                 </a>
 
-                <!-- 8. Comentarios (Comment) -->
                 <a href="{{ route('comments.index') }}" class="group block bg-white dark:bg-gray-800 overflow-hidden shadow-md sm:rounded-2xl border border-gray-100 dark:border-gray-700 hover:border-purple-500/50 hover:shadow-xl hover:-translate-y-1 transition-all duration-300">
                     <div class="p-8">
                         <div class="flex justify-between items-start mb-6">
