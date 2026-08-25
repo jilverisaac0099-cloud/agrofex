@@ -18,9 +18,9 @@ class OrderController extends Controller
      */
     public function index()
     {
-        $orders = Order::with('customer,order_detail,payment')->paginate(10);
+        $orders = Order::with('customer', 'order_detail', 'payment')->paginate(10);
 
-        return view('orders.index', compact('orders'));
+        return view('orders.index', compact('orders', ));
     }
     /**
      * Show the form for creating a new resource.
@@ -29,7 +29,7 @@ class OrderController extends Controller
     {
         $order = new Order();
         $customers = Customer::all();
-        $order_details = Order::all();
+        $order_details = orderdetail::all();
         $payments = Payment::all();
         return view('orders.create', compact('order', 'customers','order_details','payments'));
     }
@@ -73,7 +73,7 @@ class OrderController extends Controller
         $order = Order::findOrFail($id);
         $order->update($request->validate());
         return redirect()->route('orders.index')->with('success', 'pedido actualizado correctamente.');
-    
+
     }
 
     /**

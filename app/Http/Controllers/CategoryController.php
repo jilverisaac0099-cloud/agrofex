@@ -20,11 +20,13 @@ class CategoryController extends Controller
         return view('categories.create', compact('category'));
     }
 
-    public function store(CategoryRequest $request)
+public function store( Categoryrequest $request)
     {
         Category::create($request->validated());
         return redirect()->route('categories.index')->with('success', 'Categoría creada exitosamente.');
     }
+
+
 
     public function show(Category $category)
     {
