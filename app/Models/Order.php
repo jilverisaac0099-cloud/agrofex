@@ -28,4 +28,10 @@ class Order extends Model
     {
         return $this->hasOne(Payment::class);
     }
+
+    
+    public function order_detail(): HasOne
+    {
+        return $this->hasOne(orderdetail::class);
+    }
 }

@@ -31,7 +31,7 @@
                             @forelse ($orders as $order)
                                 <tr class="hover:bg-gray-50 dark:hover:bg-gray-700/30 transition-colors group">
                                     <td class="px-6 py-4">
-                                        <span class="text-sm font-mono text-gray-400 dark:text-gray-500">{{ $address_shipping->id }}</span>
+                                        <span class="text-sm font-mono text-gray-400 dark:text-gray-500">{{ $order->id }}</span>
                                     </td>
                                     <td class="px-6 py-4">
                                         <div class="text-sm font-semibold text-gray-900 dark:text-white">

@@ -51,4 +51,27 @@
         </div>
     </div>
 </x-app-layout>
-
+<script>
+        function confirmarEliminacion(id) {
+            Swal.fire({
+                title: '¿Eliminar de forma permanente?',
+                text: "Esta acción no se puede deshacer.",
+                icon: 'warning',
+                showCancelButton: true,
+                confirmButtonColor: '#4f46e5',
+                cancelButtonColor: '#ef4444',
+                confirmButtonText: 'Sí, eliminar',
+                cancelButtonText: 'Cancelar',
+                background: '#1e293b',
+                color: '#ffffff',
+                customClass: {
+                    popup: 'rounded-2xl border border-gray-700'
+                }
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    document.getElementById('form-delete-' + id).submit();
+                }
+            })
+        }
+    </script>
+</x-app-layout>
