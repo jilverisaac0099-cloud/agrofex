@@ -19,8 +19,8 @@ class OrderDetailController extends Controller
      */
     public function index()
     {
-        $orderdetails = OrderDetail::with('order,product,customer')->paginate(10);
-        return view('orderdetails.index', compact('orderdetails'));
+        $order_details = OrderDetail::with('order,product,customer')->paginate(10);
+        return view('order_details.index', compact('order_details'));
     }
 
     /**
