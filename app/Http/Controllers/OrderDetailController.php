@@ -28,11 +28,11 @@ class OrderDetailController extends Controller
      */
     public function create()
     {
-        $orderdetail = new OrderDetail();
+        $order_detail = new OrderDetail();
         $orders = Order::all();
         $products = Product::all();
         $customers = Customer::all();
-        return view('orderdetails.create', compact('orderdetail', 'orders', 'products', 'customers'));
+        return view('order_details.create', compact('order_detail', 'orders', 'products', 'customers'));
     }
 
     /**
