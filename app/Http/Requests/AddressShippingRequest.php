@@ -23,7 +23,7 @@ class AddressShippingRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'customer_id' => ['required', 'integer'],
+           'customer_id' => ['required', 'integer'],
            'department'=>['required','string','min:3','max:45'],
            'municipality'=>['required','string','min:3','max:45'],
            'exempt_address'=>['required','string','min:3','max:255'],
