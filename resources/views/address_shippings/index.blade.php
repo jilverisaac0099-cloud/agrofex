@@ -23,7 +23,6 @@
                                 <th class="px-6 py-4 text-xs font-bold text-gray-500 dark:text-gray-400 uppercase tracking-wider">municipio</th>
                                 <th class="px-6 py-4 text-xs font-bold text-gray-500 dark:text-gray-400 uppercase tracking-wider">direccion exacta</th>
                                 <th class="px-6 py-4 text-xs font-bold text-gray-500 dark:text-gray-400 uppercase tracking-wider">Cliente</th>
-                                <th class="px-6 py-4 text-xs font-bold text-gray-500 dark:text-gray-400 uppercase tracking-wider">productor </th>
                                 <th class="px-6 py-4 text-xs font-bold text-gray-500 dark:text-gray-400 uppercase tracking-wider text-right">Acciones</th>
                             </tr>
                         </thead>
@@ -58,12 +57,6 @@
                                         </span>
                                     </td>
 
-
-                                    <td class="px-6 py-4">
-                                        <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-blue-100 text-blue-800 dark:bg-blue-900/30 dark:text-blue-400">
-                                            {{ $address_shipping->producer->name ?? 'Sin productor' }}
-                                        </span>
-                                    </td>
 
                                     <td class="px-6 py-4 text-right">
                                         <div class="flex justify-end items-center space-x-3 opacity-0 group-hover:opacity-100 transition-opacity">
