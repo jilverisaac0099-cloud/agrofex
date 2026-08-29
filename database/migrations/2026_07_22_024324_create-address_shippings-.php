@@ -17,9 +17,6 @@ return new class extends Migration
             $table->string('municipality', 45);
             $table->string('exempt_address', 45 );
 
-            $table->integer('producer_id')->unsigned();
-            $table->foreign("producer_id")->references("id")->on("producers")->onUpdate("cascade")->onDelete("cascade");
-
             $table->bigInteger('customer_id')->unsigned();
             $table->foreign("customer_id")->references("id")->on("customers")->onUpdate("cascade")->onDelete("cascade");
             $table->timestamps();
