@@ -33,9 +33,9 @@
                                     <td class="px-6 py-4">
                                         <span class="text-sm font-mono text-gray-400 dark:text-gray-500">{{ $order->id }}</span>
                                     </td>
-                                    <td class="px-6 py-4">
-                                        <div class="text-sm font-semibold text-gray-900 dark:text-white">
-                                            {{ $order->datetime ?? 'Sin Fecha y Hora' }}
+                                   <td class="px-6 py-4">
+                                    <div class="text-sm font-semibold text-gray-900 dark:text-white">
+                                        {{ $order->date_time ? \Carbon\Carbon::parse($order->date_time)->format('d/m/Y h:i A') : 'Sin Fecha y Hora' }}
                                         </div>
                                     </td>
 
