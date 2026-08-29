@@ -6,7 +6,6 @@ use Illuminate\Http\Request;
 use App\Models\AddressShipping;
 use App\Http\Requests\AddressShippingRequest;
 use App\Models\Customer;
-use App\Models\Producer;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\View\View;
 
@@ -29,7 +28,7 @@ class AddressShippingController extends Controller
     {
         $address_shipping = new AddressShipping();
         $customers = Customer::all();
-        return view('address_shippings.create', compact('address_shipping', 'customers', 'producers'));
+        return view('address_shippings.create', compact('address_shipping', 'customers',));
     }
 
     /**
@@ -37,7 +36,7 @@ class AddressShippingController extends Controller
      */
     public function store(AddressShippingRequest $request): RedirectResponse
     {
-        AddressShipping::create($request->validated());
+        AddressShipping::create($request->all());
         return redirect()->route('address_shippings.index')->with('success', 'Dirección de envío creada correctamente.');
     }
 
@@ -47,7 +46,7 @@ class AddressShippingController extends Controller
 public function show(AddressShipping $address_shipping): View
 {
 
-    $address_shipping->load(['customer', ]);
+    $address_shipping = $address_shipping::with('customer')->findOrFail($address_shipping->id);
 
 
     return view('address_shippings.show', compact('address_shipping'));

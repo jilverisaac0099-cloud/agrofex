@@ -13,11 +13,11 @@
     <div class="py-12">
         <div class="max-w-2xl mx-auto sm:px-6 lg:px-8">
             <div class="bg-white dark:bg-gray-800 overflow-hidden shadow-xl sm:rounded-2xl border border-gray-100 dark:border-gray-700 p-8">
-                
+
                 <form action="{{ route('address_shippings.update', $address_shipping) }}" method="POST" id="form-edit-{{ $address_shipping->id }}" onsubmit="confirmarActualizacion(event, {{ $address_shipping->id }})" novalidate>
                     @csrf
                     @method('PUT')
-                    
+
                     <div class="mb-6">
                         <label for="customer_id" class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">Cliente</label>
                         <select id="customer_id" name="customer_id" class="w-full rounded-xl border-gray-300 dark:border-gray-700 dark:bg-gray-900 dark:text-gray-300 focus:border-indigo-500 dark:focus:border-indigo-600 focus:ring focus:ring-indigo-500 focus:ring-opacity-20 shadow-sm transition-colors">
@@ -91,10 +91,11 @@
                 }
             }).then((result) => {
                 if (result.isConfirmed) {
-                    document.getElementById('form-edit-' + id).submit(); 
+                    document.getElementById('form-edit-' + id).submit();
                 }
             })
         }
     </script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 </x-app-layout>
 

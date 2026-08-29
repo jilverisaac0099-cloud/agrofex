@@ -14,62 +14,34 @@
     <div class="py-12">
         <div class="max-w-2xl mx-auto sm:px-6 lg:px-8">
             <div class="bg-white dark:bg-gray-800 overflow-hidden shadow-xl sm:rounded-2xl border border-gray-100 dark:border-gray-700 p-8">
-                <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
 
-                    <div class="mb-6">
-                    <h3 class="text-sm font-medium text-gray-500 dark:text-gray-400 uppercase tracking-wider mb-2">Departamento</h3>
-                    <p class="text-lg font-semibold text-gray-900 dark:text-white bg-gray-50 dark:bg-gray-700/50 p-4 rounded-xl border border-gray-100 dark:border-gray-700">
-                        {{ $address_shipping->department }}
-                    </p>
+                <div class="mb-6">
+                    <h3 class="text-sm font-medium text-gray-500 dark:text-gray-400 uppercase tracking-wider mb-2">Calle</h3>
+                    <p class="text-lg font-semibold text-gray-900 dark:text-white">{{ $address_shipping->department }}</p>
                 </div>
 
                 <div class="mb-6">
-                    <h3 class="text-sm font-medium text-gray-500 dark:text-gray-400 uppercase tracking-wider mb-2">Municipio<</h3>
-                    <p class="text-lg font-semibold text-gray-900 dark:text-white bg-gray-50 dark:bg-gray-700/50 p-4 rounded-xl border border-gray-100 dark:border-gray-700">
-                        {{ $address_shipping->municipality }}
-                    </p>
+                    <h3 class="text-sm font-medium text-gray-500 dark:text-gray-400 uppercase tracking-wider mb-2">Municipio</h3>
+                    <p class="text-lg font-semibold text-gray-900 dark:text-white">{{ $address_shipping->municipality }}</p>
                 </div>
 
-
-                <div class="mb-6">
-                    <h3 class="text-sm font-medium text-gray-500 dark:text-gray-400 uppercase tracking-wider mb-2">Dirección Exacta</h3>
-                    <p class="text-lg font-semibold text-gray-900 dark:text-white bg-gray-50 dark:bg-gray-700/50 p-4 rounded-xl border border-gray-100 dark:border-gray-700">
-                        {{ $address_shipping->exempt_address }}
-                    </p>
+                  <div class="mb-6">
+                    <h3 class="text-sm font-medium text-gray-500 dark:text-gray-400 uppercase tracking-wider mb-2">Direccion exacta</h3>
+                    <p class="text-lg font-semibold text-gray-900 dark:text-white">{{ $address_shipping->exempt_address }}</p>
                 </div>
 
-                        <h3 class="text-sm font-medium text-gray-500 dark:text-gray-400 uppercase tracking-wider mb-2">Cliente</h3>
-                        <span class="inline-flex items-center px-3 py-1 rounded-full text-xs font-medium bg-blue-100 text-blue-800 dark:bg-blue-900/30 dark:text-blue-400">
-                            {{ $address_shipping->customer->name ?? $address_shipping->customer_id }}
-                        </span>
-                    </div>
+            
+                <div class="mb-6 border-t border-gray-100 dark:border-gray-700 pt-6">
+                    <h3 class="text-sm font-medium text-gray-500 dark:text-gray-400 uppercase tracking-wider mb-2">Cliente</h3>
+                    <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-blue-100 text-blue-800 dark:bg-blue-900/30 dark:text-blue-400">
+                        {{ $address_shipping->customer->name ?? 'Sin cliente' }}
+                    </span>
+                </div>
+
                 </div>
 
             </div>
         </div>
     </div>
 
-    <script>
-        function confirmarEliminacion(id) {
-            Swal.fire({
-                title: '¿Eliminar de forma permanente?',
-                text: "Esta acción no se puede deshacer.",
-                icon: 'warning',
-                showCancelButton: true,
-                confirmButtonColor: '#4f46e5',
-                cancelButtonColor: '#ef4444',
-                confirmButtonText: 'Sí, eliminar',
-                cancelButtonText: 'Cancelar',
-                background: '#1e293b',
-                color: '#ffffff',
-                customClass: {
-                    popup: 'rounded-2xl border border-gray-700'
-                }
-            }).then((result) => {
-                if (result.isConfirmed) {
-                    document.getElementById('form-delete-' + id).submit();
-                }
-            })
-        }
-    </script>
 </x-app-layout>

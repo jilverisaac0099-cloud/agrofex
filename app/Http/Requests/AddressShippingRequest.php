@@ -23,7 +23,7 @@ class AddressShippingRequest extends FormRequest
     public function rules(): array
     {
         return [
-           'customer_id' => ['required', 'integer'],
+           'customer_id' => ['required'],
           
            'department'=>['required','string','min:3','max:45'],
            'municipality'=>['required','string','min:3','max:45'],
@@ -34,7 +34,7 @@ class AddressShippingRequest extends FormRequest
     public function messages(): array
     {
         return [
-            'customer_id.required' => 'El campo cliente es obligatorio.',
+            'customer_id' => 'required|exists:customers,id',
            
             'department.string' => 'El departamento solo pemite caracteres',
             'department.required' => 'El campo departamento es obligatorio.',
