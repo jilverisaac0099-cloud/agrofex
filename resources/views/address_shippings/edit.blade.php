@@ -34,21 +34,6 @@
                     </div>
 
                     <div class="mb-6">
-                        <label for="producer_id" class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">Productor</label>
-                        <select id="producer_id" name="producer_id" class="w-full rounded-xl border-gray-300 dark:border-gray-700 dark:bg-gray-900 dark:text-gray-300 focus:border-indigo-500 dark:focus:border-indigo-600 focus:ring focus:ring-indigo-500 focus:ring-opacity-20 shadow-sm transition-colors">
-                            <option value="">-- Seleccione un productor --</option>
-                            @foreach($producers as $producer)
-                                <option value="{{ $producer->id }}" {{ old('producer_id', $address_shipping->producer_id) == $producer->id ? 'selected' : '' }}>
-                                    {{ $producer->name }}
-                                </option>
-                            @endforeach
-                        </select>
-                        @error('producer_id')
-                            <p class="mt-2 text-sm text-red-600 dark:text-red-400">{{ $message }}</p>
-                        @enderror
-                    </div>
-
-                    <div class="mb-6">
                         <label for="department" class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">Departamento</label>
                         <input type="text" id="department" name="department" value="{{ old('department', $address_shipping->department) }}" class="w-full rounded-xl border-gray-300 dark:border-gray-700 dark:bg-gray-900 dark:text-gray-300 focus:border-indigo-500 dark:focus:border-indigo-600 focus:ring focus:ring-indigo-500 focus:ring-opacity-20 shadow-sm transition-colors">
                         @error('department')
