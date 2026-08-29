@@ -18,7 +18,7 @@ class AddressShippingController extends Controller
     public function index()
 {
 
-    $address_shippings = AddressShipping::with('customer','producer')->paginate(10);
+    $address_shippings = AddressShipping::with('customer',)->paginate(10);
 
     return view('address_shippings.index', compact('address_shippings'));
 }
@@ -29,7 +29,6 @@ class AddressShippingController extends Controller
     {
         $address_shipping = new AddressShipping();
         $customers = Customer::all();
-        $producers = Producer::all();
         return view('address_shippings.create', compact('address_shipping', 'customers', 'producers'));
     }
 
@@ -48,7 +47,7 @@ class AddressShippingController extends Controller
 public function show(AddressShipping $address_shipping): View
 {
 
-    $address_shipping->load(['customer', 'producer']);
+    $address_shipping->load(['customer', ]);
 
 
     return view('address_shippings.show', compact('address_shipping'));
@@ -61,8 +60,7 @@ public function show(AddressShipping $address_shipping): View
     {
         $address_shipping = AddressShipping::findOrFail($id);
         $customers = Customer::all();
-        $producers = Producer::all();
-        return view('address_shippings.edit', compact('address_shipping', 'customers', 'producers'));
+        return view('address_shippings.edit', compact('address_shipping', 'customers',));
     }
 
     /**
