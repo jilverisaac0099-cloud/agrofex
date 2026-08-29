@@ -29,7 +29,7 @@ class OrderController extends Controller
     {
         $order = new Order();
         $customers = Customer::all();
-        $order_details = orderdetail::all();
+        $order_details = Orderdetail::all();
         $payments = Payment::all();
         return view('orders.create', compact('order', 'customers','order_details','payments'));
     }
@@ -61,7 +61,7 @@ class OrderController extends Controller
         $customers = Customer::all();
         $order_details = OrderDetail::all();
         $payments = payment::all();
-        return view('order.edit', compact('order' , 'customers', 'order_details', 'payments'));
+        return view('orders.edit', compact('order' , 'customers', 'order_details', 'payments'));
     }
 
     /**
