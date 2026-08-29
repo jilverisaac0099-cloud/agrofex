@@ -45,11 +45,14 @@ class AddressShippingController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(AddressShipping $address_shipping): View
-    {
-        $address_shipping->load('customer,producer');
-        return view('address_shipping.show', compact('address_shipping', 'customer', 'producer'));
-    }
+public function show(AddressShipping $address_shipping): View
+{
+
+    $address_shipping->load(['customer', 'producer']);
+
+
+    return view('address_shippings.show', compact('address_shipping'));
+}
 
     /**
      * Show the form for editing the specified resource.

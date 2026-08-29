@@ -24,9 +24,10 @@ class AddressShippingRequest extends FormRequest
     {
         return [
            'customer_id' => ['required', 'integer'],
-           'department'=>['required','string','min:3','max:45'],
-           'municipality'=>['required','string','min:3','max:45'],
-           'exempt_address'=>['required','string','min:3','max:255'],
+          
+           'department'=>['nullable','string','min:3','max:45'],
+           'municipality'=>['nullable','string','min:3','max:45'],
+           'exempt_address'=>['nullable','string','min:3','max:255'],
 
         ];
     }
@@ -34,7 +35,7 @@ class AddressShippingRequest extends FormRequest
     {
         return [
             'customer_id.required' => 'El campo cliente es obligatorio.',
-
+           
             'department.string' => 'El departamento solo pemite caracteres',
             'department.required' => 'El campo departamento es obligatorio.',
             'department.min' => 'El minimo de caracteres es de 3',

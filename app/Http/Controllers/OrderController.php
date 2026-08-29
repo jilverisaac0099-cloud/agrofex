@@ -71,7 +71,7 @@ class OrderController extends Controller
     {
 
         $order = Order::findOrFail($id);
-        $order->update($request->validate());
+        $order->update($request->all());
         return redirect()->route('orders.index')->with('success', 'pedido actualizado correctamente.');
 
     }

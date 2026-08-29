@@ -17,18 +17,18 @@
                 <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
                     <div>
                         <h3 class="text-sm font-medium text-gray-500 dark:text-gray-400 uppercase tracking-wider mb-2">Departamento</h3>
-                        <p class="text-lg font-semibold text-gray-900 dark:text-white">{{ $addressShipping->department }}</p>
+                        <p class="text-lg font-semibold text-gray-900 dark:text-white">{{ $address_shipping->department }}</p>
                     </div>
                     <div>
                         <h3 class="text-sm font-medium text-gray-500 dark:text-gray-400 uppercase tracking-wider mb-2">Municipio</h3>
-                        <p class="text-lg font-semibold text-gray-900 dark:text-white">{{ $addressShipping->municipality }}</p>
+                        <p class="text-lg font-semibold text-gray-900 dark:text-white">{{ $address_shipping->municipality }}</p>
                     </div>
                 </div>
 
                 <div class="mb-6">
                     <h3 class="text-sm font-medium text-gray-500 dark:text-gray-400 uppercase tracking-wider mb-2">Dirección Exacta</h3>
                     <p class="text-lg font-semibold text-gray-900 dark:text-white bg-gray-50 dark:bg-gray-700/50 p-4 rounded-xl border border-gray-100 dark:border-gray-700">
-                        {{ $addressShipping->exempt_address }}
+                        {{ $address_shipping->exempt_address }}
                     </p>
                 </div>
 
@@ -36,13 +36,13 @@
                     <div>
                         <h3 class="text-sm font-medium text-gray-500 dark:text-gray-400 uppercase tracking-wider mb-2">Productor</h3>
                         <span class="inline-flex items-center px-3 py-1 rounded-full text-xs font-medium bg-emerald-100 text-emerald-800 dark:bg-emerald-900/30 dark:text-emerald-400">
-                            {{ $addressShipping->producer->name ?? $addressShipping->producer_id }}
+                            {{ $address_shipping->producer->name ?? $address_shipping->producer_id }}
                         </span>
                     </div>
                     <div>
                         <h3 class="text-sm font-medium text-gray-500 dark:text-gray-400 uppercase tracking-wider mb-2">Cliente</h3>
                         <span class="inline-flex items-center px-3 py-1 rounded-full text-xs font-medium bg-blue-100 text-blue-800 dark:bg-blue-900/30 dark:text-blue-400">
-                            {{ $addressShipping->customer->name ?? $addressShipping->customer_id }}
+                            {{ $address_shipping->customer->name ?? $address_shipping->customer_id }}
                         </span>
                     </div>
                 </div>
