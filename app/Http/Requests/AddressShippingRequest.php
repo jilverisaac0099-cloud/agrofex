@@ -25,9 +25,9 @@ class AddressShippingRequest extends FormRequest
         return [
            'customer_id' => ['required', 'integer'],
           
-           'department'=>['nullable','string','min:3','max:45'],
-           'municipality'=>['nullable','string','min:3','max:45'],
-           'exempt_address'=>['nullable','string','min:3','max:255'],
+           'department'=>['required','string','min:3','max:45'],
+           'municipality'=>['required','string','min:3','max:45'],
+           'exempt_address'=>['required','string','min:3','max:255'],
 
         ];
     }
