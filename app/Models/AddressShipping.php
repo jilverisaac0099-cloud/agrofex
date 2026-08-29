@@ -12,16 +12,11 @@ class AddressShipping extends Model
         'municipality',
         'exempt_address',
         'customer_id',
-        'producer_id'
+
     ];
 
     public function customer(): BelongsTo
     {
         return $this->belongsTo(Customer::class);
-    }
-
-    public function producer(): BelongsTo
-    {
-        return $this->belongsTo(producer::class);
     }
 }
