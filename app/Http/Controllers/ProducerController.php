@@ -9,8 +9,8 @@ class ProducerController extends Controller
 {
     public function index()
     {
-        $producers = Producer::orderByDesc('id')->get();
-        return view('producers.index', compact('producers'));
+       $producers = Producer::all(); 
+    return view('producers.index', compact('producers'));
     }
 
     public function create()

@@ -14,6 +14,13 @@ export default {
             fontFamily: {
                 sans: ['Figtree', ...defaultTheme.fontFamily.sans],
             },
+            colors: {
+                'agro-dark': '#09090b', // Fondo casi negro (Zinc 950)
+                'agro-card': '#18181b', // Fondo para tarjetas (Zinc 900)
+                'agro-green': '#00d632', // Verde vibrante principal
+                'agro-green-dark': '#009924',
+                'agro-yellow': '#ffc107', // Amarillo para botones CTA
+            }
         },
     },
 

@@ -22,7 +22,9 @@
 
                 <div class="mb-6">
                     <h3 class="text-sm font-medium text-gray-500 dark:text-gray-400 uppercase tracking-wider mb-2">Fecha y Hora</h3>
-                    <p class="text-lg font-semibold text-gray-900 dark:text-white">{{ $order->date_time }}</p>
+                    <p class="text-lg font-semibold text-gray-900 dark:text-white">
+                        {{ $order->date_time ? \Carbon\Carbon::parse($order->date_time)->format('d/m/Y h:i A') : 'Sin Fecha y Hora' }}
+                    </p>
                 </div>
 
                 <div class="mb-6">
@@ -50,8 +52,9 @@
             </div>
         </div>
     </div>
-</x-app-layout>
-<script>
+
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script>
         function confirmarEliminacion(id) {
             Swal.fire({
                 title: '¿Eliminar de forma permanente?',
