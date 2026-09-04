@@ -1,69 +1,59 @@
 <x-app-layout>
     <x-slot name="header">
-        <div class="flex items-center justify-between">
-            <h2 class="font-semibold text-2xl text-gray-800 dark:text-gray-100 leading-tight tracking-tight">
-                {{ __('Editar Categoría:') }} <span class="text-indigo-600 dark:text-indigo-400">{{ $category->name }}</span>
-            </h2>
-            <a href="{{ route('categories.index') }}" class="inline-flex items-center px-4 py-2 bg-gray-100 dark:bg-gray-700 border border-transparent rounded-xl font-semibold text-xs text-gray-700 dark:text-gray-300 uppercase tracking-widest hover:bg-gray-200 dark:hover:bg-gray-600 transition ease-in-out duration-150">
-                Volver a la lista
+        <div class="flex items-center gap-4">
+            <a href="{{ route('categories.index') }}" class="text-gray-400 hover:text-agro-green transition p-2 bg-zinc-900 rounded-full border border-zinc-800 hover:border-agro-green">
+                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18"></path></svg>
             </a>
+            <h2 class="font-bold text-2xl text-white leading-tight tracking-tight">
+                {{ __('Editar Categoría') }}
+            </h2>
         </div>
     </x-slot>
 
     <div class="py-12">
-        <div class="max-w-4xl mx-auto sm:px-6 lg:px-8">
-            <div class="bg-white dark:bg-gray-800 overflow-hidden shadow-sm sm:rounded-2xl border border-gray-100 dark:border-gray-700">
-                
-                <form action="{{ route('categories.update', $category) }}" method="POST" class="p-6 sm:p-8">
+        <div class="max-w-3xl mx-auto sm:px-6 lg:px-8">
+            <div class="bg-agro-card shadow-xl sm:rounded-3xl border border-zinc-800 overflow-hidden relative">
+                <div class="absolute top-0 right-0 -mt-8 -mr-8 w-48 h-48 bg-agro-green/10 rounded-full blur-3xl pointer-events-none"></div>
+
+                <form method="POST" action="{{ route('categories.update', $category->id) }}" class="p-8 space-y-6 relative z-10">
                     @csrf
                     @method('PUT')
 
-                    <div class="space-y-6">
-                        
-                      
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                        <!-- Nombre -->
                         <div>
-                            <label for="name" class="block text-sm text-gray-700 dark:text-gray-300 mb-2">Nombre de la categoría</label>
-                            <input type="text" name="name" id="name" value="{{ old('name', $category->name) }}" class="w-full rounded-lg border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-900 text-gray-900 dark:text-white focus:border-indigo-500 focus:ring-indigo-500 shadow-sm" required>
-                            @error('name')
-                                <p class="mt-1 text-sm text-red-600 dark:text-red-400">{{ $message }}</p>
-                            @enderror
+                            <label for="name" class="block font-medium text-sm text-gray-300 mb-2">Nombre de la Categoría</label>
+                            <input id="name" class="block w-full bg-agro-dark border-zinc-700 text-white focus:border-agro-green focus:ring-agro-green rounded-xl shadow-sm px-4 py-3 transition-colors" type="text" name="name" value="{{ old('name', $category->name) }}" required autofocus />
+                            @error('name') <span class="text-red-500 text-sm mt-1 block">{{ $message }}</span> @enderror
                         </div>
 
-                       >
+                        <!-- Estado -->
                         <div>
-                            <label for="description" class="block text-sm text-gray-700 dark:text-gray-300 mb-2">Descripción (Opcional)</label>
-                            <textarea name="description" id="description" rows="3" class="w-full rounded-lg border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-900 text-gray-900 dark:text-white focus:border-indigo-500 focus:ring-indigo-500 shadow-sm">{{ old('description', $category->description) }}</textarea>
-                            @error('description')
-                                <p class="mt-1 text-sm text-red-600 dark:text-red-400">{{ $message }}</p>
-                            @enderror
-                        </div>
-
-                      
-                        <div>
-                            <label for="status" class="block text-sm text-gray-700 dark:text-gray-300 mb-2">Estado</label>
-                            <select name="status" id="status" class="w-full rounded-lg border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-900 text-gray-900 dark:text-white focus:border-indigo-500 focus:ring-indigo-500 shadow-sm" required>
-                                <option value="active" {{ old('status', $category->status) == 'active' ? 'selected' : '' }}>Activo</option>
-                                <option value="inactive" {{ old('status', $category->status) == 'inactive' ? 'selected' : '' }}>Inactivo</option>
+                            <label for="status" class="block font-medium text-sm text-gray-300 mb-2">Estado</label>
+                            <select id="status" name="status" class="block w-full bg-agro-dark border-zinc-700 text-white focus:border-agro-green focus:ring-agro-green rounded-xl shadow-sm px-4 py-3 transition-colors" required>
+                                <option value="Activo" {{ old('status', $category->status) == 'Activo' ? 'selected' : '' }}>Activo</option>
+                                <option value="Inactivo" {{ old('status', $category->status) == 'Inactivo' ? 'selected' : '' }}>Inactivo</option>
                             </select>
-                            @error('status')
-                                <p class="mt-1 text-sm text-red-600 dark:text-red-400">{{ $message }}</p>
-                            @enderror
+                            @error('status') <span class="text-red-500 text-sm mt-1 block">{{ $message }}</span> @enderror
                         </div>
 
+                        <!-- Descripción -->
+                        <div class="md:col-span-2">
+                            <label for="description" class="block font-medium text-sm text-gray-300 mb-2">Descripción Breve</label>
+                            <textarea id="description" name="description" rows="3" class="block w-full bg-agro-dark border-zinc-700 text-white focus:border-agro-green focus:ring-agro-green rounded-xl shadow-sm px-4 py-3 transition-colors" required>{{ old('description', $category->description) }}</textarea>
+                            @error('description') <span class="text-red-500 text-sm mt-1 block">{{ $message }}</span> @enderror
+                        </div>
                     </div>
 
-                    <div class="mt-10 flex justify-end items-center space-x-4">
-                        <a href="{{ route('categories.index') }}" class="px-4 py-2 text-sm font-semibold text-gray-700 dark:text-gray-300 hover:text-gray-900 dark:hover:text-white tracking-widest uppercase transition-colors">
-                            Cancelar
-                        </a>
-                        <button type="submit" class="px-6 py-2.5 bg-indigo-600 border border-transparent rounded-lg font-bold text-xs text-white uppercase tracking-widest hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 transition-colors">
-                            Actualizar Categoría
+                    <div class="flex items-center justify-end gap-6 mt-10 pt-6 border-t border-zinc-800">
+                        <a href="{{ route('categories.index') }}" class="text-sm text-gray-400 hover:text-white transition font-medium">Cancelar y volver</a>
+                        <button type="submit" class="flex items-center gap-2 bg-agro-green text-black px-8 py-3 rounded-full font-bold hover:bg-green-500 transition shadow-[0_0_15px_rgba(0,214,50,0.3)] uppercase tracking-wider text-sm">
+                            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15"></path></svg>
+                            Actualizar Datos
                         </button>
                     </div>
                 </form>
-
             </div>
         </div>
     </div>
 </x-app-layout>
-
