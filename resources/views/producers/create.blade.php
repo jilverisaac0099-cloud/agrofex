@@ -50,18 +50,17 @@
                             @error('telephone') <span class="text-red-500 text-sm mt-1 block">{{ $message }}</span> @enderror
                         </div>
 
-                        <!-- Género -->
-                        <div>
-                            <label for="gender" class="block font-medium text-sm text-gray-300 mb-2">Género</label>
-                            <select id="gender" name="gender" class="block w-full bg-agro-dark border-zinc-700 text-white focus:border-agro-green focus:ring-agro-green rounded-xl shadow-sm px-4 py-3 transition-colors" required>
-                                <option value="" disabled selected class="text-gray-500">Seleccione un género</option>
-                                <option value="Masculino" {{ old('gender') == 'Masculino' ? 'selected' : '' }}>Masculino</option>
-                                <option value="Femenino" {{ old('gender') == 'Femenino' ? 'selected' : '' }}>Femenino</option>
-                                <option value="Otro" {{ old('gender') == 'Otro' ? 'selected' : '' }}>Otro</option>
-                            </select>
-                            @error('gender') <span class="text-red-500 text-sm mt-1 block">{{ $message }}</span> @enderror
-                        </div>
 
+<div>
+    <label for="genero" class="block font-medium text-sm text-gray-300 mb-2">Género</label>
+    <select id="genero" name="genero" class="block w-full bg-agro-dark border-zinc-700 text-white focus:border-agro-green focus:ring-agro-green rounded-xl shadow-sm px-4 py-3 transition-colors" required>
+        <option value="" disabled {{ old('genero') ? '' : 'selected' }} class="text-gray-500">Seleccione un género</option>
+        <option value="masculino" {{ old('genero') == 'masculino' ? 'selected' : '' }}>Masculino</option>
+        <option value="femenino" {{ old('genero') == 'femenino' ? 'selected' : '' }}>Femenino</option>
+        <option value="otro" {{ old('genero') == 'otro' ? 'selected' : '' }}>Otro</option>
+    </select>
+    @error('genero') <span class="text-red-500 text-sm mt-1 block">{{ $message }}</span> @enderror
+</div>
                         <!-- Horario -->
                         <div>
                             <label for="schedule" class="block font-medium text-sm text-gray-300 mb-2">Horario de Atención (Opcional)</label>

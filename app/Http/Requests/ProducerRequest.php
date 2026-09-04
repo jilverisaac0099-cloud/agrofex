@@ -49,7 +49,7 @@ class ProducerRequest extends FormRequest
             'lastname.max' => 'El maximo de caracteres es de 50',
 
             'gender.required'=> 'El campo género es obligatorio.',
-            'gender.in' => 'El campo género debe ser uno de los siguientes: mujer, hombre, otro.',
+            'gender.in' => 'El campo género debe ser uno de los siguientes: masculino, hombre, otro.',
             'gender.string' => 'El campo género debe ser una cadena de texto.',
             'gender.min' => 'El minimo de caracteres es de 3',
             'gender.max' => 'El maximo de caracteres es de 20',
