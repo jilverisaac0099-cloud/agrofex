@@ -15,7 +15,7 @@
             <div class="bg-agro-card shadow-xl sm:rounded-3xl border border-zinc-800 overflow-hidden relative">
                 <div class="absolute top-0 right-0 -mt-8 -mr-8 w-48 h-48 bg-agro-green/10 rounded-full blur-3xl pointer-events-none"></div>
 
-                <form method="POST" action="{{ route('payments.store') }}" class="p-8 space-y-6 relative z-10">
+                <form id="paymentForm" method="POST" action="{{ route('payments.store') }}" class="p-8 space-y-6 relative z-10">
                     @csrf
 
                     <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
@@ -45,9 +45,9 @@
                         </div>
 
                         <div>
-                            <label for="date" class="block font-medium text-sm text-gray-300 mb-2">Fecha de Pago *</label>
-                            <input id="date" class="block w-full bg-agro-dark border-zinc-700 text-white focus:border-agro-green focus:ring-agro-green rounded-xl shadow-sm px-4 py-3 transition-colors" type="date" name="date" value="{{ old('date', date('Y-m-d')) }}" required />
-                            @error('date') <span class="text-red-500 text-sm mt-1 block">{{ $message }}</span> @enderror
+                            <label for="payment_date" class="block font-medium text-sm text-gray-300 mb-2">Fecha de Pago *</label>
+                            <input id="payment_date" class="block w-full bg-agro-dark border-zinc-700 text-white focus:border-agro-green focus:ring-agro-green rounded-xl shadow-sm px-4 py-3 transition-colors" type="date" name="payment_date" value="{{ old('payment_date', date('Y-m-d')) }}" required />
+                            @error('payment_date') <span class="text-red-500 text-sm mt-1 block">{{ $message }}</span> @enderror
                         </div>
 
                         <div>
@@ -62,7 +62,7 @@
 
                     <div class="flex items-center justify-end gap-6 mt-10 pt-6 border-t border-zinc-800">
                         <a href="{{ route('payments.index') }}" class="text-sm text-gray-400 hover:text-white transition font-medium">Cancelar y volver</a>
-                        <button type="submit" class="flex items-center gap-2 bg-agro-green text-black px-8 py-3 rounded-full font-bold hover:bg-green-500 transition shadow-[0_0_15px_rgba(0,214,50,0.3)] uppercase tracking-wider text-sm">
+                        <button type="submit" id="submitBtn" class="flex items-center gap-2 bg-agro-green text-black px-8 py-3 rounded-full font-bold hover:bg-green-500 transition shadow-[0_0_15px_rgba(0,214,50,0.3)] uppercase tracking-wider text-sm cursor-pointer">
                             <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
                             Guardar Pago
                         </button>

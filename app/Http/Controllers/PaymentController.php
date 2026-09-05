@@ -1,88 +1,56 @@
 <?php
 
 namespace App\Http\Controllers;
+
 use App\Models\Payment;
-use Illuminate\Http\PaymentRequest;
 use App\Models\Order;
+use App\Http\Requests\PaymentRequest;
 use Illuminate\Http\RedirectResponse;
-use illuminate\View\View;
 
 class PaymentController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     */
     public function index()
     {
-    $payments = Payment::with('order')->paginate(10);
-
-    return view('payments.index', compact('payments'));
+        $payments = Payment::with('order')->orderByDesc('id')->paginate(10);
+        return view('payments.index', compact('payments'));
     }
 
-    /**
-     * Show the form for creating a new resource.
-     */
     public function create()
     {
-        $payment = new Payment();
         $orders = Order::all();
-        return view('payments.create', compact('payment', 'orders'));
+        return view('payments.create', compact('orders'));
     }
-    
+public function store(PaymentRequest $request): RedirectResponse
+{
+    Payment::create($request->validated());
 
-    /**
-     * Store a newly created resource in storage.
-     */
-    public function store(PaymentRequest $request)
-    {
-    
-        Payment::create($request->validated());
-        return redirect()->route('payments.index')->with('success', 'pago creado correctamente.');
-    }
+    return redirect()->to('payments')->with('success', 'Pago registrado correctamente.');
+}
 
-    /**
-     * Display the specified resource.
-     */
-    public function show(Payment $payment): View
+    public function show(string $id)
     {
-        $payment->load('order');
+        $payment = Payment::with('order')->findOrFail($id);
         return view('payments.show', compact('payment'));
     }
-    
 
-    /**
-     * Show the form for editing the specified resource.
-     */
     public function edit(string $id)
     {
-    
         $payment = Payment::findOrFail($id);
         $orders = Order::all();
         return view('payments.edit', compact('payment', 'orders'));
-
     }
 
-    /**
-     * Update the specified resource in storage.
-     */
     public function update(PaymentRequest $request, string $id): RedirectResponse
     {
-        
         $payment = Payment::findOrFail($id);
         $payment->update($request->validated());
-        return redirect()->route('payments.index')->with('success', 'pago actualizado correctamente.');
-
+        return redirect()->route('payments.index')->with('success', 'Pago actualizado correctamente.');
     }
 
-    /**
-     * Remove the specified resource from storage.
-     */
-    public function destroy(string $id):RedirectResponse
+    public function destroy(string $id): RedirectResponse
     {
-        
         $payment = Payment::findOrFail($id);
         $payment->delete();
         return redirect()->route('payments.index')->with('success', 'Pago eliminado correctamente.');
- 
     }
 }

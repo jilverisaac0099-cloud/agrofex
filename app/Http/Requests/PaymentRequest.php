@@ -20,7 +20,7 @@ class PaymentRequest extends FormRequest
         return [
             'order_id' => ['required', 'integer'],
             'payment_method' => ['required', 'string', 'max:45'],
-            'amount' => ['required', 'numeric', 'min:0.01', 'max:999999999999.99'],
+            'amount_paid' => ['required', 'numeric', 'min:0.01', 'max:999999999999.99'],
             'status' => ['required', 'string', 'max:45'],
         ];
     }
