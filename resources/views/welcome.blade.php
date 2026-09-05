@@ -15,7 +15,7 @@
     <!-- Navbar -->
     <nav class="absolute top-0 w-full z-50 px-6 py-4 flex justify-between items-center">
         <div class="flex items-center gap-2 text-2xl font-bold text-white">
-            <span class="text-agro-yellow text-3xl">☘</span> AGROFEX
+            <span class="text-agro-yellow text-3xl">☘️</span> AGROFEX
         </div>
         <div class="hidden md:flex gap-8 text-sm font-medium text-gray-300">
             <a href="#" class="hover:text-agro-green transition">¿Cómo funciona?</a>
@@ -134,7 +134,7 @@
         <div class="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-4 gap-12 mb-12">
             <div class="col-span-1 md:col-span-2 space-y-4">
                 <div class="flex items-center gap-2 text-xl font-bold text-white mb-4">
-                    <span class="text-agro-yellow text-2xl">☘</span> AGROFEX
+                    <span class="text-agro-yellow text-2xl">☘️</span> AGROFEX
                 </div>
                 <p class="text-gray-500 max-w-sm">
                     Agrofex es un mercado digital diseñado para impulsar a los pequeños productores y reducir el desperdicio de cosechas.

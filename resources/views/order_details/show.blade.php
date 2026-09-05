@@ -1,82 +1,77 @@
 <x-app-layout>
     <x-slot name="header">
-        <div class="flex items-center justify-between">
-            <h2 class="font-semibold text-2xl text-gray-800 dark:text-gray-100 leading-tight tracking-tight">
-                {{ __('Ver Detalle de Orden') }}
+        <div class="flex justify-between items-center">
+            <h2 class="font-bold text-2xl text-white leading-tight tracking-tight">
+                Detalle del Pedido <span class="text-agro-green">#{{ $orderDetail->order_id }}</span>
             </h2>
-            <a href="{{ route('order_details.index') }}" class="inline-flex items-center px-4 py-2 bg-gray-200 dark:bg-gray-700 border border-transparent rounded-xl font-semibold text-xs text-gray-800 dark:text-gray-200 uppercase tracking-widest hover:bg-gray-300 dark:hover:bg-gray-600 focus:outline-none focus:ring-2 focus:ring-gray-500 focus:ring-offset-2 dark:focus:ring-offset-gray-800 transition ease-in-out duration-150 shadow-sm">
-                <svg class="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18"></path></svg>
-                Volver a la lista
-            </a>
+            <div class="flex items-center gap-3">
+                <a href="{{ route('order_details.edit', $orderDetail->id) }}" class="flex items-center gap-2 bg-blue-600/20 text-blue-400 px-5 py-2 rounded-full font-bold hover:bg-blue-600 hover:text-white border border-blue-500/30 transition text-sm">
+                    <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z"></path></svg>
+                    Editar
+                </a>
+                <a href="{{ route('order_details.index') }}" class="flex items-center gap-2 bg-zinc-800 text-gray-300 px-5 py-2 rounded-full font-bold hover:bg-zinc-700 hover:text-white border border-zinc-700 transition text-sm">
+                    <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18"></path></svg>
+                    Volver
+                </a>
+            </div>
         </div>
     </x-slot>
 
     <div class="py-12">
-        <div class="max-w-2xl mx-auto sm:px-6 lg:px-8">
-            <div class="bg-white dark:bg-gray-800 overflow-hidden shadow-xl sm:rounded-2xl border border-gray-100 dark:border-gray-700 p-8">
-                
-                <div class="mb-6">
-                    <h3 class="text-sm font-medium text-gray-500 dark:text-gray-400 uppercase tracking-wider mb-2">ID del Detalle</h3>
-                    <p class="text-lg font-semibold text-gray-900 dark:text-white">#{{ $orderDetail->id }}</p>
-                </div>
+        <div class="max-w-4xl mx-auto sm:px-6 lg:px-8">
+            <div class="bg-[#1a1a1c] shadow-2xl sm:rounded-3xl border border-zinc-800 overflow-hidden relative p-8 space-y-6">
 
-                <div class="mb-6 border-b border-gray-100 dark:border-gray-700 pb-6">
-                    <h3 class="text-sm font-medium text-gray-500 dark:text-gray-400 uppercase tracking-wider mb-2">Orden Asociada</h3>
-                    <span class="inline-flex items-center px-3 py-1 rounded-full text-sm font-medium bg-indigo-100 text-indigo-800 dark:bg-indigo-900/30 dark:text-indigo-400">
-                        Orden #{{ $orderDetail->order_id }} {{ $orderDetail->order && $orderDetail->order->customer ? ' - ' . $orderDetail->order->customer->name : '' }}
+                <div class="absolute top-0 right-0 -mt-8 -mr-8 w-48 h-48 bg-[#00d632]/10 rounded-full blur-3xl pointer-events-none"></div>
+
+                <div class="flex justify-between items-start border-b border-zinc-800 pb-6 relative z-10">
+                    <div>
+                        <span class="text-xs font-bold text-gray-500 uppercase tracking-wider">PRODUCTO ASOCIADO</span>
+                        <h3 class="text-3xl font-extrabold text-white mt-1">{{ $orderDetail->product->name ?? 'Producto Eliminado' }}</h3>
+                        <div class="flex items-center gap-2 mt-2">
+                            <svg class="w-4 h-4 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"></path></svg>
+                            <p class="text-sm text-gray-400">Cliente: <span class="font-semibold text-gray-300">{{ $orderDetail->customer->name ?? 'N/A' }} {{ $orderDetail->customer->last_name ?? '' }}</span></p>
+                        </div>
+                    </div>
+                    <span class="px-4 py-1.5 rounded-full text-sm font-bold bg-[#00d632]/10 text-[#00d632] border border-[#00d632]/20">
+                        ID Detalle #{{ $orderDetail->id }}
                     </span>
                 </div>
 
-                <div class="mb-6">
-                    <h3 class="text-sm font-medium text-gray-500 dark:text-gray-400 uppercase tracking-wider mb-2">Producto</h3>
-                    <span class="inline-flex items-center px-3 py-1 rounded-full text-sm font-medium bg-blue-100 text-blue-800 dark:bg-blue-900/30 dark:text-blue-400">
-                        {{ $orderDetail->product->name ?? 'Producto no encontrado' }}
-                    </span>
-                </div>
 
-                <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
-                    <div>
-                        <h3 class="text-sm font-medium text-gray-500 dark:text-gray-400 uppercase tracking-wider mb-2">Cantidad</h3>
-                        <p class="text-lg font-semibold text-gray-900 dark:text-white">{{ $orderDetail->amount }}</p>
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-6 relative z-10">
+
+                    <div class="bg-zinc-900/50 p-5 rounded-2xl border border-zinc-800/80 hover:border-zinc-700 transition">
+                        <span class="text-xs font-bold text-gray-500 uppercase tracking-wider block mb-1">Cantidad</span>
+                        <p class="text-2xl font-semibold text-white">{{ number_format($orderDetail->amount, 2) }}</p>
                     </div>
 
-                    <div>
-                        <h3 class="text-sm font-medium text-gray-500 dark:text-gray-400 uppercase tracking-wider mb-2">Precio Unitario</h3>
-                        <p class="text-lg font-semibold text-gray-900 dark:text-white">${{ number_format($orderDetail->price, 2) }}</p>
+
+                    <div class="bg-zinc-900/50 p-5 rounded-2xl border border-zinc-800/80 hover:border-zinc-700 transition">
+                        <span class="text-xs font-bold text-gray-500 uppercase tracking-wider block mb-1">Precio Unitario</span>
+                        <p class="text-2xl font-semibold text-white">${{ number_format($orderDetail->price, 2) }}</p>
+                    </div>
+
+                    <div class="bg-zinc-900/50 p-5 rounded-2xl border border-zinc-800/80 border-b-2 border-b-[#00d632] shadow-[0_4px_20px_rgba(0,214,50,0.05)]">
+                        <span class="text-xs font-bold text-[#00d632]/80 uppercase tracking-wider block mb-1">Subtotal</span>
+                        <p class="text-3xl font-black text-[#00d632]">${{ number_format($orderDetail->subtotal, 2) }}</p>
                     </div>
                 </div>
 
-                <div class="mt-6 border-t border-gray-100 dark:border-gray-700 pt-6">
-                    <h3 class="text-sm font-medium text-gray-500 dark:text-gray-400 uppercase tracking-wider mb-2">Subtotal</h3>
-                    <p class="text-2xl font-bold text-indigo-600 dark:text-indigo-400">${{ number_format($orderDetail->subtotal, 2) }}</p>
+            
+                <div class="flex items-center justify-between pt-6 border-t border-zinc-800 relative z-10">
+                    <form action="{{ route('order_details.destroy', $orderDetail->id) }}" method="POST" onsubmit="return confirm('¿Estás seguro de eliminar este detalle?');">
+                        @csrf
+                        @method('DELETE')
+                        <button type="submit" class="flex items-center gap-2 text-red-500 hover:text-red-400 font-bold text-sm tracking-wider uppercase transition group">
+                            <svg class="w-4 h-4 group-hover:scale-110 transition" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16"></path></svg>
+                            Eliminar Detalle
+                        </button>
+                    </form>
+                    <a href="{{ route('order_details.index') }}" class="text-gray-400 hover:text-white font-bold text-sm tracking-wider uppercase transition">
+                        VOLVER AL LISTADO
+                    </a>
                 </div>
-
             </div>
         </div>
     </div>
-
-    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-    <script>
-        function confirmarEliminacion(id) {
-            Swal.fire({
-                title: '¿Eliminar de forma permanente?',
-                text: "Esta acción no se puede deshacer.",
-                icon: 'warning',
-                showCancelButton: true,
-                confirmButtonColor: '#4f46e5',
-                cancelButtonColor: '#ef4444',
-                confirmButtonText: 'Sí, eliminar',
-                cancelButtonText: 'Cancelar',
-                background: '#1e293b',
-                color: '#ffffff',
-                customClass: {
-                    popup: 'rounded-2xl border border-gray-700'
-                }
-            }).then((result) => {
-                if (result.isConfirmed) {
-                    document.getElementById('form-delete-' + id).submit();
-                }
-            })
-        }
-    </script>
 </x-app-layout>

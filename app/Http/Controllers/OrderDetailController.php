@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\OrderDetailRequest;
+use App\Http\Requests\OrderDetailRequest;
 use App\Models\OrderDetail;
 use App\Models\Order;
 use App\Models\Product;
@@ -11,7 +11,6 @@ use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\View\View;
 
-
 class OrderDetailController extends Controller
 {
     /**
@@ -19,8 +18,8 @@ class OrderDetailController extends Controller
      */
     public function index()
     {
-        $order_details = OrderDetail::with('order,product,customer')->paginate(10);
-        return view('order_details.index', compact('order_details'));
+        $orderDetails = OrderDetail::with(['order', 'product', 'customer'])->orderByDesc('id')->paginate(10);
+        return view('order_details.index', compact('orderDetails'));
     }
 
     /**
@@ -28,11 +27,10 @@ class OrderDetailController extends Controller
      */
     public function create()
     {
-        $order_detail = new OrderDetail();
         $orders = Order::all();
         $products = Product::all();
         $customers = Customer::all();
-        return view('order_details.create', compact('order_detail', 'orders', 'products', 'customers'));
+        return view('order_details.create', compact('orders', 'products', 'customers'));
     }
 
     /**
@@ -47,10 +45,11 @@ class OrderDetailController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(OrderDetail $orderdetail)
+    public function show(string $id)
     {
-        $orderdetail->load('order,product,customer');
-        return view(' order_details.show', compact('order_detail'));
+        // Corregido: Nombramiento de variable y carga de relaciones correcta
+        $orderDetail = OrderDetail::with(['order', 'product', 'customer'])->findOrFail($id);
+        return view('order_details.show', compact('orderDetail'));
     }
 
     /**
@@ -58,20 +57,22 @@ class OrderDetailController extends Controller
      */
     public function edit(string $id)
     {
-        $order_detail = OrderDetail::findOrFail($id);
+        // Corregido: $orderDetail en formato camelCase para coincidir con la vista
+        $orderDetail = OrderDetail::findOrFail($id);
         $orders = Order::all();
         $products = Product::all();
         $customers = Customer::all();
-        return view('order_details.edit', compact('order_detail', 'orders', 'products', 'customers'));
+        return view('order_details.edit', compact('orderDetail', 'orders', 'products', 'customers'));
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(OrdenDetailRequest $request, string $id)
+    public function update(OrderDetailRequest $request, string $id)
     {
-        $order_detail = OrderDetail::findOrFail($id);
-        $order_detail->update($request->validated());
+        // Corregido: El typo de "OrdenDetailRequest" a "OrderDetailRequest"
+        $orderDetail = OrderDetail::findOrFail($id);
+        $orderDetail->update($request->validated());
         return redirect()->route('order_details.index')->with('success', 'Detalle de pedido actualizado correctamente.');
     }
 
@@ -80,8 +81,8 @@ class OrderDetailController extends Controller
      */
     public function destroy(string $id)
     {
-        $order_detail = OrderDetail::findOrFail($id);
-        $order_detail->delete();
+        $orderDetail = OrderDetail::findOrFail($id);
+        $orderDetail->delete();
         return redirect()->route('order_details.index')->with('success', 'Detalle de pedido eliminado correctamente.');
     }
 }

@@ -84,8 +84,7 @@
                         <div>
                             <label for="status" class="block text-sm font-medium text-gray-300 mb-2">Estado *</label>
                             <select name="status" id="status" required class="w-full bg-zinc-900 border border-zinc-800 rounded-xl px-4 py-3 text-white focus:outline-none focus:border-agro-green focus:ring-1 focus:ring-agro-green transition">
-                                <option value="Activo" {{ old('status', 'Activo') == 'Activo' ? 'selected' : '' }}>Activo</option>
-                                <option value="Inactivo" {{ old('status') == 'Inactivo' ? 'selected' : '' }}>Inactivo</option>
+                                <option value="Disponible" {{ old('status') == 'Disponible' ? 'selected' : '' }}>Disponible</option>
                                 <option value="Agotado" {{ old('status') == 'Agotado' ? 'selected' : '' }}>Agotado</option>
                             </select>
                             @error('status')

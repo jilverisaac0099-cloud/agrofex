@@ -27,12 +27,12 @@
                             @error('name') <span class="text-red-500 text-sm mt-1 block">{{ $message }}</span> @enderror
                         </div>
 
-                        <!-- Estado -->
+                        <!-- Estado (Valores corregidos a minúsculas) -->
                         <div>
                             <label for="status" class="block font-medium text-sm text-gray-300 mb-2">Estado</label>
                             <select id="status" name="status" class="block w-full bg-agro-dark border-zinc-700 text-white focus:border-agro-green focus:ring-agro-green rounded-xl shadow-sm px-4 py-3 transition-colors" required>
-                                <option value="Activo" {{ old('status', $category->status) == 'Activo' ? 'selected' : '' }}>Activo</option>
-                                <option value="Inactivo" {{ old('status', $category->status) == 'Inactivo' ? 'selected' : '' }}>Inactivo</option>
+                                <option value="activo" {{ old('status', strtolower($category->status)) == 'activo' ? 'selected' : '' }}>Activo</option>
+                                <option value="inactivo" {{ old('status', strtolower($category->status)) == 'inactivo' ? 'selected' : '' }}>Inactivo</option>
                             </select>
                             @error('status') <span class="text-red-500 text-sm mt-1 block">{{ $message }}</span> @enderror
                         </div>

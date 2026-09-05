@@ -1,81 +1,70 @@
 <x-app-layout>
     <x-slot name="header">
-        <div class="flex items-center justify-between">
-            <h2 class="font-semibold text-2xl text-gray-800 dark:text-gray-100 leading-tight tracking-tight">
-                {{ __('Pedido') }}
+        <div class="flex justify-between items-center">
+            <h2 class="font-bold text-2xl text-white leading-tight tracking-tight">
+                {{ __('Gestión de Órdenes') }}
             </h2>
-            <a href="{{ route('orders.create') }}" class="inline-flex items-center px-4 py-2 bg-indigo-600 border border-transparent rounded-xl font-semibold text-xs text-white uppercase tracking-widest hover:bg-indigo-700 focus:bg-indigo-700 active:bg-indigo-900 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 dark:focus:ring-offset-gray-800 transition ease-in-out duration-150 shadow-lg shadow-indigo-500/30">
-                <svg class="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4"></path></svg>
-                Nuevo Pedido
+            <a href="{{ route('orders.create') }}" class="flex items-center gap-2 bg-agro-green text-black px-6 py-2.5 rounded-full font-bold hover:bg-green-500 transition shadow-[0_0_15px_rgba(0,214,50,0.3)] text-sm uppercase tracking-wider">
+                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4"></path></svg>
+                Nueva Orden
             </a>
         </div>
     </x-slot>
 
     <div class="py-12">
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
-            <div class="bg-white dark:bg-gray-800 overflow-hidden shadow-xl sm:rounded-2xl border border-gray-100 dark:border-gray-700">
+            <div class="bg-agro-card shadow-xl sm:rounded-2xl border border-zinc-800 overflow-hidden">
                 <div class="overflow-x-auto">
-                    <table class="w-full text-left border-collapse">
-                        <thead>
-                            <tr class="bg-gray-50/50 dark:bg-gray-900/50 border-b border-gray-100 dark:border-gray-700">
-                                <th class="px-6 py-4 text-xs font-bold text-gray-500 dark:text-gray-400 uppercase tracking-wider w-16">#</th>
-                                <th class="px-6 py-4 text-xs font-bold text-gray-500 dark:text-gray-400 uppercase tracking-wider">Fecha y hora</th>
-                                <th class="px-6 py-4 text-xs font-bold text-gray-500 dark:text-gray-400 uppercase tracking-wider">Subtotal</th>
-                                <th class="px-6 py-4 text-xs font-bold text-gray-500 dark:text-gray-400 uppercase tracking-wider">total</th>
-                                <th class="px-6 py-4 text-xs font-bold text-gray-500 dark:text-gray-400 uppercase tracking-wider">Estado de pedidos</th>
-                                <th class="px-6 py-4 text-xs font-bold text-gray-500 dark:text-gray-400 uppercase tracking-wider">cliente</th>
-                                <th class="px-6 py-4 text-xs font-bold text-gray-500 dark:text-gray-400 uppercase tracking-wider text-right">Acciones</th>
+                    <table class="min-w-full divide-y divide-zinc-800">
+                        <thead class="bg-zinc-900/50">
+                            <tr>
+                                <th scope="col" class="px-6 py-4 text-left text-xs font-bold text-gray-400 uppercase tracking-wider">Orden ID</th>
+                                <th scope="col" class="px-6 py-4 text-left text-xs font-bold text-gray-400 uppercase tracking-wider">Cliente</th>
+                                <th scope="col" class="px-6 py-4 text-left text-xs font-bold text-gray-400 uppercase tracking-wider">Fecha y Hora</th>
+                                <th scope="col" class="px-6 py-4 text-left text-xs font-bold text-gray-400 uppercase tracking-wider">Subtotal</th>
+                                <th scope="col" class="px-6 py-4 text-left text-xs font-bold text-gray-400 uppercase tracking-wider">Total</th>
+                                <th scope="col" class="px-6 py-4 text-left text-xs font-bold text-gray-400 uppercase tracking-wider">Estado</th>
+                                <th scope="col" class="px-6 py-4 text-center text-xs font-bold text-gray-400 uppercase tracking-wider">Acciones</th>
                             </tr>
                         </thead>
-                        <tbody class="divide-y divide-gray-100 dark:divide-gray-700">
-                            @forelse ($orders as $order)
-                                <tr class="hover:bg-gray-50 dark:hover:bg-gray-700/30 transition-colors group">
-                                    <td class="px-6 py-4">
-                                        <span class="text-sm font-mono text-gray-400 dark:text-gray-500">{{ $order->id }}</span>
+                        <tbody class="divide-y divide-zinc-800 bg-agro-card">
+                            @forelse($orders as $order)
+                                <tr class="hover:bg-zinc-800/35 transition-colors duration-200">
+                                    <td class="px-6 py-4 whitespace-nowrap text-sm font-bold text-agro-green">
+                                        #{{ $order->id }}
                                     </td>
-                                   <td class="px-6 py-4">
-                                    <div class="text-sm font-semibold text-gray-900 dark:text-white">
-                                        {{ $order->date_time ? \Carbon\Carbon::parse($order->date_time)->format('d/m/Y h:i A') : 'Sin Fecha y Hora' }}
-                                        </div>
+                                    <td class="px-6 py-4 whitespace-nowrap text-sm font-semibold text-white">
+                                        {{ $order->customer->name ?? 'N/A' }} {{ $order->customer->last_name ?? '' }}
                                     </td>
-
-                                    <td class="px-6 py-4">
-                                        <div class="text-sm font-semibold text-gray-900 dark:text-white">
-                                            {{ $order->subtotal ?? 'Sin subtotal' }}
-                                        </div>
+                                    <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-300">
+                                        {{ $order->date_time }}
                                     </td>
-
-                                    <td class="px-6 py-4">
-                                    <div class="text-sm font-semibold text-gray-900 dark:text-white">
-                                            {{ $order->total ?? 'Sin total' }}
-                                        </div>
+                                    <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-300">
+                                        ${{ number_format($order->subtotal, 2) }}
                                     </td>
-
-                                    <td class="px-6 py-4">
-                                        <div class="text-sm font-semibold text-gray-900 dark:text-white">
-                                            {{ $order->status ?? 'estado de los pedidos' }}
-                                        </div>
+                                    <td class="px-6 py-4 whitespace-nowrap text-sm font-bold text-white">
+                                        ${{ number_format($order->total, 2) }}
                                     </td>
-                                    
-
-                                    <td class="px-6 py-4">
-                                        <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-blue-100 text-blue-800 dark:bg-blue-900/30 dark:text-blue-400">
-                                            {{ $order->customer->name ?? 'Sin cliente' }}
+                                    <td class="px-6 py-4 whitespace-nowrap">
+                                        <span class="px-3 py-1 rounded-full text-xs font-bold 
+                                            {{ $order->status == 'Completado' ? 'bg-green-500/10 text-green-400 border border-green-500/20' : '' }}
+                                            {{ $order->status == 'Pendiente' ? 'bg-yellow-500/10 text-yellow-400 border border-yellow-500/20' : '' }}
+                                            {{ $order->status == 'Cancelado' ? 'bg-red-500/10 text-red-400 border border-red-500/20' : '' }}">
+                                            {{ $order->status }}
                                         </span>
                                     </td>
-                                    <td class="px-6 py-4 text-right">
-                                        <div class="flex justify-end items-center space-x-3 opacity-0 group-hover:opacity-100 transition-opacity">
-                                            <a href="{{ route('orders.show', $order) }}" class="text-gray-400 hover:text-indigo-600 dark:hover:text-indigo-400 transition-colors" title="Ver">
+                                    <td class="px-6 py-4 whitespace-nowrap text-center text-sm font-medium">
+                                        <div class="flex items-center justify-center gap-3">
+                                            <a href="{{ route('orders.show', $order->id) }}" class="text-gray-400 hover:text-white transition" title="Ver Detalles">
                                                 <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"></path></svg>
                                             </a>
-                                            <a href="{{ route('orders.edit', $order) }}" class="text-gray-400 hover:text-amber-500 transition-colors" title="Editar">
+                                            <a href="{{ route('orders.edit', $order->id) }}" class="text-blue-400 hover:text-blue-300 transition" title="Editar">
                                                 <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z"></path></svg>
                                             </a>
-                                        
-                                            <form action="{{ route('orders.destroy', $order) }}" method="POST" class="inline" id="form-delete-{{ $order->id }}">
+                                            <form action="{{ route('orders.destroy', $order->id) }}" method="POST" class="inline-block" onsubmit="return confirm('¿Estás seguro de eliminar esta orden?');">
                                                 @csrf
                                                 @method('DELETE')
-                                                <button type="button" onclick="confirmarEliminacion({{ $order->id }})" class="text-gray-400 hover:text-red-500 transition-colors" title="Eliminar">
+                                                <button type="submit" class="text-red-500 hover:text-red-400 transition" title="Eliminar">
                                                     <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16"></path></svg>
                                                 </button>
                                             </form>
@@ -84,10 +73,12 @@
                                 </tr>
                             @empty
                                 <tr>
-                                    <td colspan="8" class="px-6 py-12 text-center">
-                                        <div class="flex flex-col items-center">
-                                            <svg class="w-12 h-12 text-gray-300 dark:text-gray-600 mb-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path></svg>
-                                            <p class="text-gray-500 dark:text-gray-400 text-lg font-medium">No hay pedido</p>
+                                    <td colspan="7" class="px-6 py-16 text-center">
+                                        <div class="flex flex-col items-center justify-center">
+                                            <div class="w-16 h-16 bg-zinc-900 rounded-full flex items-center justify-center border border-zinc-800 mb-4 text-gray-600">
+                                                <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-3 7h3m-3 4h3m-6-4h.01M9 16h.01"></path></svg>
+                                            </div>
+                                            <h3 class="text-lg font-medium text-gray-300">No hay órdenes registradas</h3>
                                         </div>
                                     </td>
                                 </tr>
@@ -95,37 +86,7 @@
                         </tbody>
                     </table>
                 </div>
-
-                @if(isset($orders) && method_exists($orders, 'hasPages') && $orders->hasPages())
-                    <div class="px-6 py-4 border-t border-gray-100 dark:border-gray-700 bg-gray-50/50 dark:bg-gray-900/50">
-                        {{ $orders->links() }}
-                    </div>
-                @endif
             </div>
         </div>
     </div>
-
-    <script>
-        function confirmarEliminacion(id) {
-            Swal.fire({
-                title: '¿Eliminar de forma permanente?',
-                text: "Esta acción no se puede deshacer.",
-                icon: 'warning',
-                showCancelButton: true,
-                confirmButtonColor: '#4f46e5',
-                cancelButtonColor: '#ef4444',
-                confirmButtonText: 'Sí, eliminar',
-                cancelButtonText: 'Cancelar',
-                background: '#1e293b',
-                color: '#ffffff',
-                customClass: {
-                    popup: 'rounded-2xl border border-gray-700'
-                }
-            }).then((result) => {
-                if (result.isConfirmed) {
-                    document.getElementById('form-delete-' + id).submit();
-                }
-            })
-        }
-    </script>
 </x-app-layout>

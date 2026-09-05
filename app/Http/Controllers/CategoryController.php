@@ -9,7 +9,6 @@ class CategoryController extends Controller
 {
     public function index()
     {
-
         $categories = Category::withCount('products')->orderByDesc('id')->paginate(10);
         return view('categories.index', compact('categories'));
     }
@@ -20,13 +19,11 @@ class CategoryController extends Controller
         return view('categories.create', compact('category'));
     }
 
-public function store( Categoryrequest $request)
+    public function store(CategoryRequest $request)
     {
         Category::create($request->validated());
         return redirect()->route('categories.index')->with('success', 'Categoría creada exitosamente.');
     }
-
-
 
     public function show(Category $category)
     {
